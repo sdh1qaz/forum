@@ -29,7 +29,7 @@
 <![endif]-->
 <header id="header" class="header bg-white">
     <div class="navbar-container">
-        <a th:href="${commons.site_url()}" class="navbar-logo">
+        <a th:href="@{/}" class="navbar-logo"><!-- thymeleaf标签 -->
             <img th:src="@{/user/img/logo.jpg}" alt="首页"/>业务处理技术论坛
         </a>
         <!-- <div class="navbar-menu">
@@ -37,6 +37,7 @@
             <a th:href="${commons.site_url('/links')}">友链</a>
             <a th:href="${commons.site_url('/about')}">关于</a>
         </div> -->
+        
         <div class="navbar-search" onclick="alert('搜索功能还没有开发')">
             <span class="icon-search"></span>
             <form role="search" onsubmit="return false;">
@@ -46,14 +47,14 @@
                 </span>
             </form>
         </div>
-        <div class="navbar-mobile-menu" onclick="">
+        <!-- <div class="navbar-mobile-menu" onclick="">
             <span class="icon-menu cross"><span class="middle"></span></span>
             <ul>
                 <li><a th:href="${commons.site_url('/archives')}">归档</a></li>
                 <li><a th:href="${commons.site_url('/links')}">友链</a></li>
                 <li><a th:href="${commons.site_url('/about')}">关于</a></li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </header>
 </body>
