@@ -28,6 +28,8 @@ var tale = new $.tale();
  */
 function subArticle(status) {
     var title = $('#articleForm input[name=title]').val();
+ // 同步数据后可以直接取得textarea的value
+    editor.sync();//这一句参照  http://kindeditor.net/docs/usage.html第4步
     var content = $('#text').val();
     if (title == '') {
         tale.alertWarn('请输入文章标题');
@@ -37,6 +39,7 @@ function subArticle(status) {
         tale.alertWarn('请输入文章内容');
         return;
     }
+    //alert(content);
     $('#content-editor').val(content);
     $("#articleForm #status").val(status);
     $("#articleForm #categories").val($('#multiple-sel').val());
@@ -62,11 +65,12 @@ function subArticle(status) {
     });
 }
 
-var textarea = $('#text'),
-    toolbar = $('<div class="markdown-editor" id="md-button-bar" />').insertBefore(textarea.parent())
-preview = $('<div id="md-preview" class="md-hidetab" />').insertAfter('.markdown-editor');
 
-markdown(textarea, toolbar, preview);
+//浏览器工具条
+/*var textarea = $('#text'),
+toolbar = $('<div class="markdown-editor" id="md-button-bar" />').insertBefore(textarea.parent())
+preview = $('<div id="md-preview" class="md-hidetab" />').insertAfter('.markdown-editor');
+markdown(textarea, toolbar, preview);*/
 
 
 function allow_comment(obj) {

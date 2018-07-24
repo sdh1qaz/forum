@@ -92,9 +92,10 @@
                             </div>
                             <div class="clearfix"></div>
                             <div class="form-group">
-                                <textarea style="height: 450px" autocomplete="off" id="text" name="text"
+                                <!-- <textarea style="height: 450px" autocomplete="off" id="text" name="text"
                                           class="markdown-textarea"
-                                          th:utext="${contents!=null and contents.content !=null}?${contents.content}: ''"></textarea>
+                                          th:utext="${contents!=null and contents.content !=null}?${contents.content}: ''"></textarea> -->
+                                <textarea id="text" name="text" style="height:500px;width:70%" th:utext="${contents!=null and contents.content !=null}?${contents.content}: ''"></textarea>
                             </div>
 
                             <div class="form-group col-md-3 col-sm-4">
@@ -157,5 +158,13 @@
 <script th:src="@{//cdn.bootcss.com/select2/3.4.8/select2.min.js}"></script>
 <script th:src="@{//cdn.bootcss.com/jquery-toggles/2.0.4/toggles.min.js}"></script>
 <script th:src="@{/admin/js/article.js}"></script>
+<script th:src="@{/admin/editor/kindeditor-all.js}"></script>
+<script th:src="@{/admin/editor/lang/zh-CN.js}"></script>
+
+<script>
+        KindEditor.ready(function(K) {
+                window.editor = K.create('#text');
+        });
+</script>
 </body>
 </html>
