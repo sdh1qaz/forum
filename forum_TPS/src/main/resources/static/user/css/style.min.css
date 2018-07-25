@@ -697,7 +697,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .post-list-item {
 	float: left;
-	width: 25%;
+	width: 33.33%;
 	height: auto;
 	padding: 15px;
 	align-items: center
@@ -722,7 +722,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .post-list-item-container .item-thumb {
 	position: relative;
 	display: inherit;
-	min-height: 150px;
+	min-height: 200px;
 	background-position: 50% 50%;
 	background-size: cover
 }
@@ -833,7 +833,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .post-page {
-	max-width: 900px;
+	max-width: 800px;
 	padding: 130px 25px 20px
 }
 
@@ -927,7 +927,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .post-title {
-	font-size: 21px
+	font-size: 26px
 }
 
 .post-data, .post-data a {
