@@ -10,16 +10,16 @@
         <div class="post-data">
             <time th:datetime="${commons.fmtdate(article.created)}" itemprop="datePublished" th:text="'发布于 '+ ${commons.fmtdate(article.created)}"></time>
             /作者： <th:block th:utext="${commons.show_categories(article.categories)}"/> / <a href="#comments" th:text="${article.commentsNum ?: 0}+' 条评论'"></a> /
-            <th:block th:text="${article.hits}"/>浏览
+            <th:block th:text="${article.hits}"/>浏览 / &nbsp;&nbsp;最后编辑时间:&nbsp; <th:block th:text="${commons.fmtdate(article.modified, 'yyyy/MM/dd HH:mm')}"/>
         </div>
     </div>
     <div id="post-content" class="post-content" itemprop="articleBody">
         <p class="post-tags" th:utext="${commons.show_tags(article.tags)}"></p>
         <th:block th:utext="${commons.article(article.content)}"/>
-        <p class="post-info">
+        <!-- <p class="post-info">
             最后编辑时间:
             <th:block th:text="${commons.fmtdate(article.modified, 'yyyy/MM/dd HH:mm')}"/>
-        </p>
+        </p> -->
     </div>
 </article>
 <div th:replace="themes/default/comments::comments"></div>

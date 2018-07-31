@@ -49,11 +49,9 @@ public class UploadController {
 			FileUploadException {
 		ServletContext application = request.getSession().getServletContext();
 		String savePath = application.getRealPath("/") + "attached/";
-
+		//String savePath = "E:\\forum\\forum_TPS\\src\\main\\resources\\static\\attached\\";//指定固定路径
 		// 文件保存目录URL
 		String saveUrl = request.getContextPath() + "/attached/";
-		System.out.println("地址" + savePath);
-
 		// 定义允许上传的文件扩展名
 		HashMap<String, String> extMap = new HashMap<String, String>();
 		extMap.put("image", "gif,jpg,jpeg,png,bmp");
@@ -61,25 +59,24 @@ public class UploadController {
 		extMap.put("media", "swf,flv,mp3,wav,wma,wmv,mid,avi,mpg,asf,rm,rmvb");
 		extMap.put("file", "doc,docx,xls,xlsx,ppt,htm,html,txt,zip,rar,gz,bz2");
 
-		// 最大文件大小
+		// 最大文件大小 10M
 		long maxSize = 1000000;
 
-		response.reset();
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html");
-        writer = response.getWriter();
-       // writer.println(json);  //想办法把map转成json
-		
+		response.reset();//清楚response中缓存的数据
+        response.setCharacterEncoding("UTF-8");  //设置发送给客户端的响应的字符编码（MIME字符集）
+        response.setContentType("text/html");   //设置发送给客户端的响应的内容类型
+        writer = response.getWriter();   //返回可以向客户端发送字符文本的PrimWrutter对象
 		if (!ServletFileUpload.isMultipartContent(request)) {
-			writer.println(objectMapper.writeValueAsString(getError("请选择文件。")));
+			writer.println(objectMapper.writeValueAsString(getError("请选择要上传的文件。")));
 			return;
 			
 		}
 		// 检查目录
 		File uploadDir = new File(savePath);
 		if (!uploadDir.isDirectory()) {
-			writer.println(objectMapper.writeValueAsString(getError("上传目录不存在。")));
-			return;
+			//writer.println(objectMapper.writeValueAsString(getError("上传目录不存在。")));
+			//return;
+			uploadDir.mkdir();
 		}
 		// 检查目录写权限
 		if (!uploadDir.canWrite()) {
@@ -92,7 +89,7 @@ public class UploadController {
 			dirName = "image";
 		}
 		if (!extMap.containsKey(dirName)) {
-			writer.println(objectMapper.writeValueAsString(getError("目录名不正确。")));
+			writer.println(objectMapper.writeValueAsString(getError("文件类型不支持。")));
 			return;
 		}
 		// 创建文件夹
@@ -164,9 +161,15 @@ public class UploadController {
 		ServletContext application = request.getSession().getServletContext();
 		ServletOutputStream out = response.getOutputStream();
 		// 根目录路径，可以指定绝对路径，比如 /var/www/attached/
-		String rootPath = application.getRealPath("/") + "attached/";
+		 String rootPath = application.getRealPath("/") + "attached/";
 		// 根目录URL，可以指定绝对路径，比如 http://www.yoursite.com/attached/
+		//String rootPath = "E:/forumTpsSave/attached/";
 		String rootUrl = request.getContextPath() + "/attached/";
+		
+		/*String rootPath = "E:/forumTpsSave/attached/";
+		String rootUrl = "E:/forumTpsSave/attached/";*/
+		/*System.out.println("rootPath= " + rootPath);
+		System.out.println("rootUrl= " + rootUrl);*/
 		// 图片扩展名
 		String[] fileTypes = new String[] { "gif", "jpg", "jpeg", "png", "bmp" };
 
