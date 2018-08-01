@@ -62,7 +62,7 @@ public class CommentServiceImpl implements ICommentService {
             return "不存在的文章";
         }
         comments.setOwnerId(contents.getAuthorId());
-        comments.setStatus("not_audit");
+        comments.setStatus("approved");
         comments.setCreated(DateKit.getCurrentUnixTime());
         commentDao.insertSelective(comments);
 
