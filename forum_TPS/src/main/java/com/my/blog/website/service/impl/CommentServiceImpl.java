@@ -51,7 +51,7 @@ public class CommentServiceImpl implements ICommentService {
         if (StringUtils.isBlank(comments.getContent())) {
             return "评论内容不能为空";
         }
-        if (comments.getContent().length() < 5 || comments.getContent().length() > 2000) {
+        if (comments.getContent().length() < 1 || comments.getContent().length() > 2000) {
             return "评论字数在5-2000个字符";
         }
         if (null == comments.getCid()) {
