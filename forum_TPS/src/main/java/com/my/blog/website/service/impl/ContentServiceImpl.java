@@ -109,6 +109,7 @@ public class ContentServiceImpl implements IContentService {
         LOGGER.debug("Exit getContents method");
         return pageInfo;
     }
+    
 
     @Override
     public ContentVo getContents(String id) {
@@ -145,7 +146,14 @@ public class ContentServiceImpl implements IContentService {
         paginator.setTotal(total);
         return paginator;
     }
-
+    
+    /**
+     * 搜索、分页
+     * @param keyword keyword
+     * @param page page
+     * @param limit limit
+     * @return ContentVo
+     */
     @Override
     public PageInfo<ContentVo> getArticles(String keyword, Integer page, Integer limit) {
         PageHelper.startPage(page, limit);

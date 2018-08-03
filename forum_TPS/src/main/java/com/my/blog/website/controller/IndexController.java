@@ -58,11 +58,24 @@ public class IndexController extends BaseController {
      *
      * @return
      */
-    @GetMapping(value = "/")
+    @GetMapping(value = "/forum")
     public String index(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "12") int limit) {
         return this.index(request, 1, limit);
     }
-
+    
+    /**
+     * 根据题目关键词搜索文章
+     * @param request request
+     * @param p       第几页
+     * @param limit   每页大小
+     * @return 搜索结果主页
+     */
+    @RequestMapping("user/search")
+    public String listSearchResut(HttpServletRequest request,@RequestParam(value = "limit", defaultValue = "12") int limit,String keyword) {
+    	PageInfo<ContentVo> articles = contentService.getArticles(keyword, 1,limit);
+    	request.setAttribute("articles", articles);
+    	return this.render("search_result");
+    }
     /**
      * 首页分页
      *

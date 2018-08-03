@@ -65,6 +65,11 @@
     <div class="sidebar-inner slimscrollleft">
         <div id="sidebar-menu">
             <ul>
+                <li th:class="${active}=='setting'?'active':''">
+                    <a th:href="@{/forum}"
+                       th:class="${active}=='setting'?'waves-effect active':'waves-effect'"><i
+                            class="fa fa-gear" aria-hidden="true"></i><span> 回到首页 </span></a>
+                </li>
                 <li th:class="${active}=='home'?'active':''">
                     <a th:href="@{/admin/index}"
                        th:class="${active}=='home'?'waves-effect active':'waves-effect'"><i
@@ -108,6 +113,7 @@
                        th:class="${active}=='setting'?'waves-effect active':'waves-effect'"><i
                             class="fa fa-gear" aria-hidden="true"></i><span> 系统设置 </span></a>
                 </li>
+                
             </ul>
             <div class="clearfix"></div>
         </div>

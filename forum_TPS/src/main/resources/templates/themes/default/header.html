@@ -28,8 +28,9 @@
 </div>
 <![endif]-->
 <header id="header" class="header bg-white">
+    
     <div class="navbar-container">
-        <a th:href="@{/}" class="navbar-logo"><!-- thymeleaf标签 -->
+        <a th:href="@{/forum}" class="navbar-logo"><!-- thymeleaf标签 -->
             <img th:src="@{/user/img/logo.jpg}" alt="首页"/>业务处理技术论坛
         </a>
         <!-- <div class="navbar-menu">
@@ -37,16 +38,37 @@
             <a th:href="${commons.site_url('/links')}">友链</a>
             <a th:href="${commons.site_url('/about')}">关于</a>
         </div> -->
-        
-        <div class="navbar-search" onclick="alert('搜索功能还没有开发')">
+        <input type="text" id="search-inp" placeholder="请输入关键字..."/>
+       <button type="button" class="btn btn-primary" id="startTest" onclick="searchBykeyWord()">搜索</button>
+        <!-- <div class="navbar-search" >
             <span class="icon-search"></span>
             <form role="search" onsubmit="return false;">
                 <span class="search-box">
-                    <input type="text" id="search-inp" class="input" placeholder="搜索..." maxlength="30"
+                    <input type="text" id="search-inp"  placeholder="搜索..." maxlength="20"
                            autocomplete="off"/>
                 </span>
+                
             </form>
-        </div>
+        </div> -->
+        
+        <script>
+              function searchBykeyWord(){
+            	   var keyword = document.getElementById("search-inp").value;//原生js获取输入的关键字
+            	  /*$.post("user/search",
+            			  {
+            		         keyword: keyword
+            			  },
+            			  function(data,status){
+            			    //alert("Data: " + data + "\nStatus: " + status);
+            				  window.location.href = '/user/search?keyword='+keyword;
+            	          }
+            	  ); */
+            	  window.location.href = '/user/search?keyword='+keyword;
+              }
+        </script>
+         <!-- <div class="navbar-menu">
+            <a th:href="@{/admin/index}">进入后台</a>
+        </div> -->
         <!-- <div class="navbar-mobile-menu" onclick="">
             <span class="icon-menu cross"><span class="middle"></span></span>
             <ul>

@@ -54,7 +54,7 @@ function subArticle(status) {
                     text:'文章保存成功',
                     then: function () {
                         setTimeout(function () {
-                            window.location.href = '/admin/article';
+                            //window.location.href = '/admin/article';
                         }, 500);
                     }
                 });
