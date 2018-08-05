@@ -452,7 +452,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	z-index: 10;
 	display: block;
 	width: 100%;
-	height: 80px;
+	height: 50px;
 	padding: 0;
 	text-align: right;
 	-webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
@@ -464,16 +464,23 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	position: relative;
 	width: 950px;
 	max-width: 100%;
-	height: 80px;
+	height: 50px;
 	margin: 0 auto
 }
-
+/*首页搜索框的样式*/
+.text-search {
+	position: relative;
+	width: 200px;
+	left:670px;
+	top:-15px;
+	height:100%;
+}
 .navbar-logo {
 	font-size: 22px;
 	color: #686d76;
 	line-height: 22px;
 	position: absolute;
-	top: 50%;
+	top: 35%;
 	left: 0;
 	display: block;
 	width: auto;
@@ -663,7 +670,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 30px;
+	height: 50px;
 	padding: 0 40px 0 18px;
 	color: #313131;
 	border: 1px solid #6fa3ef;
@@ -671,6 +678,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	outline: 0;
 	background-color: #fff;
 	-webkit-appearance: none
+	
 }
 
 .main-content {
@@ -688,7 +696,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .post-lists {
 	position: relative;
 	display: block;
-	overflow: hidden
+	overflow: hidden;
+	top:-35px
 }
 
 .post-lists-body {
@@ -834,7 +843,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .post-page {
 	max-width: 800px;
-	padding: 130px 25px 20px
+	padding: 80px 25px 20px;
 }
 
 .post-content p {

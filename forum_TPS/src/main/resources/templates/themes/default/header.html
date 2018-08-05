@@ -38,8 +38,10 @@
             <a th:href="${commons.site_url('/links')}">友链</a>
             <a th:href="${commons.site_url('/about')}">关于</a>
         </div> -->
-        <input type="text" id="search-inp" placeholder="请输入关键字..." onkeydown="if(event.keyCode==13){return false;}" />
-       <button type="button" class="btn btn-primary" id="searchButton" onclick="searchBykeyWord()">搜索</button>
+        <div class="text-search" >
+            <input type="text" id="search-inp"  placeholder="请输入关键字..." onkeydown="if(event.keyCode==13){return false;}"/>
+            <button type="button" class="btn btn-primary" id="searchButton" onclick="searchBykeyWord()">搜索</button>
+        </div>
         <!-- <div class="navbar-search" >
             <span class="icon-search"></span>
             <form role="search" onsubmit="return false;">
