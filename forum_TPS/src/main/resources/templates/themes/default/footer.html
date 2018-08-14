@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="footer">
 <body>
-<footer class="footer bg-white">
-    <!-- <div class="footer-social">
+<!-- <footer class="footer bg-white">
+    <div class="footer-social">
         <div class="footer-container clearfix">
             <div class="social-list">
                 <th:block th:each="index:${commons.social()}">
@@ -29,7 +29,7 @@
                 </th:block>
             </div>
         </div>
-    </div> -->
+    </div>
     <div class="footer-meta">
         <div class="footer-container">
             <div class="meta-item meta-copyright">
@@ -40,9 +40,9 @@
                                  th:alt="${commons.site_title()}"/>
                         </a>
                         <br/>
-                        <!-- <p>&copy; 版权所有 <a href="https://github.com/ZHENFENG13/My-Blog" target="_blank"
+                        <p>&copy; 版权所有 <a href="https://github.com/ZHENFENG13/My-Blog" target="_blank"
                                           rel="nofollow">My Blog</a> 保留一切权利
-                        </p> -->
+                        </p>
                         <p>知无不言，言无不尽</p>
                         <br/>
                         <th:block th:if="${option}!=null and ${option.getValue()}!=''">
@@ -54,7 +54,7 @@
 
         </div>
     </div>
-</footer>
+</footer> -->
 
 <th:block th:if="${is_post}">
     <div id="directory-content" class="directory-content">
