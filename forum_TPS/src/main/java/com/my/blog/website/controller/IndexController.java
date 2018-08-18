@@ -76,6 +76,20 @@ public class IndexController extends BaseController {
     	request.setAttribute("articles", articles);
     	return this.render("search_result");
     }
+    
+   /**
+     * 后台文章管理根据题目关键词搜索文章
+     * @param request request
+     * @param p       第几页
+     * @param limit   每页大小
+     * @return 搜索结果主页
+     */
+    @RequestMapping("admin/search")
+    public String listSearchResutAdmin(HttpServletRequest request,@RequestParam(value = "limit", defaultValue = "12") int limit,String keyword) {
+    	PageInfo<ContentVo> articles = contentService.getArticles(keyword, 1,limit);
+    	request.setAttribute("articles", articles);
+    	return "admin/article_list";
+    }
     /**
      * 首页分页
      *
