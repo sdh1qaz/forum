@@ -477,7 +477,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .navbar-logo {
 	font-size: 22px;
-	color: #686d76;
+	color: #000000;
 	line-height: 22px;
 	position: absolute;
 	top: 35%;
