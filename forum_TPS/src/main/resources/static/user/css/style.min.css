@@ -487,13 +487,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	max-width: 50%;
 	height: 22px;
 	margin-top: -16px;
-	margin-left: 25px;
+	margin-left: 40px;
 	text-decoration: none
 }
 
 .navbar-logo img {
 	width: auto;
-	height: 32px;
+	height: 38px;
 	outline: 0
 }
 
