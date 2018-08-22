@@ -16,8 +16,8 @@
     <!--<version>2.0.1-SNAPSHOT</version>-->
     <packaging>jar</packaging>
 
-    <name>forum_TPS</name>
-    <description>forum_TPS</description>
+    <name>knowledge_repository</name>
+    <description>knowledge_repository</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
