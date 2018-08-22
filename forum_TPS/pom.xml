@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.my.blog.website</groupId>
-    <artifactId>forum_TPS</artifactId>
+    <artifactId>knowledge_repository</artifactId>
     <!-- now -->
     <version>1.0</version>
     <!-- version的时间节点-->
