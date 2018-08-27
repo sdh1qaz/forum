@@ -476,17 +476,17 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	height:100%;
 }
 .navbar-logo {
-	font-size: 22px;
+	font-size: 32px;
 	color: #000000;
-	line-height: 22px;
+	line-height: 30px;
 	position: absolute;
 	top: 35%;
 	left: 0;
 	display: block;
 	width: auto;
 	max-width: 50%;
-	height: 22px;
-	margin-top: -16px;
+	height: 32px;
+	margin-top: -15px;
 	margin-left: 40px;
 	text-decoration: none
 }
