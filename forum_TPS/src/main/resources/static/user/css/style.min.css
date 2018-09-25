@@ -476,7 +476,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	height:100%;
 }
 .navbar-logo {
-	font-size: 32px;
+	font-family:"楷体",Times,serif;
+	font-size: 38px;
 	color: #000000;
 	line-height: 30px;
 	position: absolute;
