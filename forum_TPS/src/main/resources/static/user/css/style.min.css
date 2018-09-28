@@ -291,7 +291,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .bg-grey {
-	background-color: #f7f7f7 !important
+	background-color: #ffffff !important
 }
 
 .bg-deepgrey {
@@ -698,7 +698,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	position: relative;
 	display: block;
 	overflow: hidden;
-	top:-35px
+	top:-50px
 }
 
 .post-lists-body {
@@ -707,9 +707,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .post-list-item {
 	float: left;
-	width: 33.33%;
-	height: auto;
-	padding: 15px;
+	width: 100%;
+	height: 50px;
+	padding: 3px;
 	align-items: center
 }
 
@@ -721,7 +721,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	border-radius: 3px;
 	background-color: #fff;
 	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .04);
-	box-shadow: 0 1px 4px rgba(0, 0, 0, .04)
+	box-shadow:0 1px 4px rgb(255, 255, 255)
 }
 
 .post-list-item-container:hover {
@@ -787,16 +787,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .post-list-item-container .item-label {
 	position: relative;
-	height: 130px;
+	height: 6s0px;
 	padding: 15px 20px 15px;
 	background-color: #fff
 }
 
 .post-list-item-container .item-label .item-title a {
-	font-size: 17px;
-	line-height: 17px;
+	font-size: 22px;
+	line-height: 20px;
 	word-break: break-all;
-	color: #313131
+	color: blue
 }
 
 .post-list-item-container .item-label .item-meta {
@@ -839,7 +839,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .index-page .post-list-item-container .item-label {
-	padding: 10px 20px 40px
+	padding: 10px 20px 10px
 }
 
 .post-page {
