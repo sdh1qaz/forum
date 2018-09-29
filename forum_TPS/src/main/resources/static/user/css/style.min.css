@@ -698,7 +698,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	position: relative;
 	display: block;
 	overflow: hidden;
-	top:-50px
+	top:-10px
 }
 
 .post-lists-body {
