@@ -28,19 +28,26 @@
 			<a th:href="@{/forum}" class="navbar-logo"> <!-- thymeleaf标签 -->
 				<img th:src="@{/user/img/logo1.jpg}" alt="首页" />知识库
 			</a>
+			<div class="sort-artiles">
+				<select>
+					<option value="volvo">搜索频率</option>
+					<option value="saab">修改时间</option>
+				</select>
+			</div>
 			<div class="text-search">
 				<input type="text" id="search-inp" placeholder="请输入关键字..."
 					onkeydown="if(event.keyCode==13){return false;}" />
 				<button type="button" class="btn btn-primary" id="searchButton"
 					onclick="searchBykeyWord()">搜索</button>
 			</div>
-			<script>
-				function searchBykeyWord() {
-					var keyword = document.getElementById("search-inp").value;//原生js获取输入的关键字
-					window.location.href = '/user/search?keyword=' + keyword;
-				}
-			</script>
+
 		</div>
+		<script>
+			function searchBykeyWord() {
+				var keyword = document.getElementById("search-inp").value;//原生js获取输入的关键字
+				window.location.href = '/user/search?keyword=' + keyword;
+			}
+		</script>
 	</header>
 </body>
 </html>

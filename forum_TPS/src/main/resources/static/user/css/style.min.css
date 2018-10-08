@@ -217,7 +217,7 @@ table thead tr {
 	background-color: #f7f7f7
 }
 
-button, input, select, textarea {
+button, input, textarea {
 	font-family: -apple-system, SF UI Text, Arial, PingFang SC,
 		Hiragino Sans GB, Microsoft YaHei, WenQuanYi Micro Hei, sans-serif;
 	font-size: 13px;
@@ -467,15 +467,22 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	height: 50px;
 	margin: 0 auto
 }
+
 /*首页搜索框的样式*/
 .text-search {
-	position: relative;
-	width: 200px;
-	left: 670px;
+	position: absolute;
+	width: 300px;
+	left: 570px;
 	top: -15px;
 	height: 100%;
 }
-
+.sort-artiles{
+	position: absolute;
+	width: 100px;
+	left: 220px;
+	top: -15px;
+	height: 100%;
+}
 .navbar-logo {
 	font-family: "楷体", Times, serif;
 	font-size: 38px;
@@ -487,9 +494,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	display: block;
 	width: auto;
 	max-width: 50%;
-	height: 32px;
+	width:170px;
+	height: 50px;
 	margin-top: -15px;
-	margin-left: 40px;
+	left: 40px;
 	text-decoration: none
 }
 
@@ -692,7 +700,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .index-page {
-	padding: 120px 20px 0
+	padding: 95px 20px 0
 }
 
 .post-lists {
@@ -1819,7 +1827,11 @@ button {
 -webkit-transform
 
 
+
+
 :translateY(0)
+
+
 
 
 }
@@ -1834,14 +1846,22 @@ keyframes slideDown { 0%{
 -webkit-transform
 
 
+
+
 :translateY(0)
+
+
 
 
 ;
 transform
 
 
+
+
 :translateY(0)
+
+
 
 
 }
@@ -1855,7 +1875,11 @@ transform
 -webkit-transform
 
 
+
+
 :translateY(-80px)
+
+
 
 
 }
@@ -1870,14 +1894,22 @@ keyframes slideUp { 0%{
 -webkit-transform
 
 
+
+
 :translateY(-80px)
+
+
 
 
 ;
 transform
 
 
+
+
 :translateY(-80px)
+
+
 
 
 }
@@ -1892,14 +1924,22 @@ keyframes fade-in { 0%{
 transform
 
 
+
+
 :translateY(0)
+
+
 
 
 ;
 opacity
 
 
+
+
 :
+
+
 
 
 1
@@ -1914,14 +1954,22 @@ opacity
 -webkit-transform
 
 
+
+
 :translateY(0)
+
+
 
 
 ;
 opacity
 
 
+
+
 :
+
+
 
 
 1
