@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="footer">
 <body>
-<!-- <footer class="footer bg-white">
+	<!-- <footer class="footer bg-white">
     <div class="footer-social">
         <div class="footer-container clearfix">
             <div class="social-list">
@@ -56,11 +56,11 @@
     </div>
 </footer> -->
 
-<th:block th:if="${is_post}">
-    <div id="directory-content" class="directory-content">
-        <div id="directory"></div>
-    </div>
-    <script>
+	<th:block th:if="${is_post}">
+		<div id="directory-content" class="directory-content">
+			<div id="directory"></div>
+		</div>
+		<script>
         /*<![CDATA[*/
         var postDirectoryBuild = function () {
             var postChildren = function children(childNodes, reg) {
@@ -152,12 +152,14 @@
         postDirectoryBuild();
         /*]]>*/
     </script>
-</th:block>
+	</th:block>
 
-<script th:src="@{//cdn.bootcss.com/headroom/0.9.1/headroom.min.js}"></script>
-<script th:src="@{//cdn.bootcss.com/highlight.js/9.9.0/highlight.min.js}"></script>
-<script th:src="@{//cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js}"></script>
-<script th:inline="javascript">
+	<script th:src="@{//cdn.bootcss.com/headroom/0.9.1/headroom.min.js}"></script>
+	<script
+		th:src="@{//cdn.bootcss.com/highlight.js/9.9.0/highlight.min.js}"></script>
+	<script
+		th:src="@{//cdn.bootcss.com/instantclick/3.0.1/instantclick.min.js}"></script>
+	<script th:inline="javascript">
     /*<![CDATA[*/
     var isOk = [[${is_post}]];
     if (isOk) {
@@ -194,7 +196,7 @@
     });
     /*]]>*/
 </script>
-<script data-no-instant="">
+	<script data-no-instant="">
     /*<![CDATA[*/
     InstantClick.on('change', function (isInitialLoad) {
         var blocks = document.querySelectorAll('pre code');
