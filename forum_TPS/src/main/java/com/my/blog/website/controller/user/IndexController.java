@@ -133,8 +133,9 @@ public class IndexController extends BaseController {
 		contentService.hitsAddsByOne(Integer.valueOf(cid));
 		//记录日志，哪个ip点击了哪篇文章
 		String clientIp = IPKit.getIpAddrByRequest(request);//客户端ip
+		int port = IPKit.getPort(request);
 		String article = contents.getTitle();//文章标题
-		LOGGER.info(clientIp + "点击了《" + article + "》");
+		LOGGER.info(clientIp + ":" + port + "点击了《" + article + "》");
 		return this.render("post");
 
 	}
