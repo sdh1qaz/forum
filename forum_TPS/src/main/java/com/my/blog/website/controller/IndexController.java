@@ -92,7 +92,7 @@ public class IndexController extends BaseController {
 	}
 
 	/**
-	 * 首页分页
+	 * 分页
 	 *
 	 * @param request
 	 * @param p第几页
