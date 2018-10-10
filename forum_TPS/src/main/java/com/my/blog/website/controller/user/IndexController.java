@@ -1,7 +1,8 @@
-package com.my.blog.website.controller;
+package com.my.blog.website.controller.user;
 
 import com.github.pagehelper.PageInfo;
 import com.my.blog.website.constant.WebConst;
+import com.my.blog.website.controller.BaseController;
 import com.my.blog.website.dto.ErrorCode;
 import com.my.blog.website.dto.MetaDto;
 import com.my.blog.website.dto.Types;
@@ -130,6 +131,10 @@ public class IndexController extends BaseController {
 			updateArticleHit(contents.getCid(), contents.getHits());
 		}*/
 		contentService.hitsAddsByOne(Integer.valueOf(cid));
+		//记录日志，哪个ip点击了哪篇文章
+		String clientIp = IPKit.getIpAddrByRequest(request);//客户端ip
+		String article = contents.getTitle();//文章标题
+		LOGGER.info(clientIp + "点击了《" + article + "》");
 		return this.render("post");
 
 	}
