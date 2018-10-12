@@ -21,6 +21,7 @@
 	rel="stylesheet" />
 <link th:href="@{/user/css/style.min.css}" rel="stylesheet" />
 <script th:src="@{//cdn.bootcss.com/jquery/2.2.3/jquery.min.js}"></script>
+
 </head>
 <body th:class="${is_post}?'':'bg-grey'">
 	<header id="header" class="header bg-white">
@@ -32,14 +33,31 @@
 				<input type="text" id="search-inp" placeholder="请输入关键字..."/>
 				<button type="button" class="btn btn-primary" id="searchButton"
 					onclick="searchBykeyWord()">搜索</button>
+					<div id="auto_div"></div>
 			</div>
 		</div>
 		<script>
+		    var test_list;
 			function searchBykeyWord() {
 				var keyword = document.getElementById("search-inp").value;//原生js获取输入的关键字
 				window.location.href = '/user/search?keyword=' + keyword;
 			}
+			$(function() {
+				$.ajax({
+				url : "/user/titles",
+				type : "GET",
+				data : {
+					'keyword' : ''
+				},
+				dataType : 'json',
+				success : function(data) {
+					test_list = data;
+					}
+				});
+			});
 		</script>
+		<script th:src="@{user/js/input.js}"></script>
+		
 	</header>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.my.blog.website.service;
 
+import java.util.List;
+
 import com.github.pagehelper.PageInfo;
 import com.my.blog.website.model.Vo.ContentVoExample;
 import com.my.blog.website.model.Vo.ContentVo;
@@ -113,5 +115,13 @@ public interface IContentService {
 	 * @return int 影响行数
 	 */
 	int hitsAddsByOne(Integer cid);
+	
+	/**
+	 * 根据关键词搜索文章标题列表
+	 * 
+	 * @param String keyword
+	 * @return List<String>
+	 */
+	List<String> getTitles(String keyword);
 	
 }

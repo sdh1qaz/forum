@@ -59,6 +59,7 @@ public class IndexController extends BaseController {
 	public String index(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "12") int limit) {
 		return this.index(request, 1, limit);
 	}
+	
 
 	/**
 	 * 根据题目关键词搜索文章

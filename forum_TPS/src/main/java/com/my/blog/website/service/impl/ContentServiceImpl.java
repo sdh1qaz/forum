@@ -23,6 +23,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -170,6 +172,30 @@ public class ContentServiceImpl implements IContentService {
 		contentVoExample.setOrderByClause("created desc");
 		List<ContentVo> contentVos = contentDao.selectByExampleWithBLOBs(contentVoExample);
 		return new PageInfo<>(contentVos);
+	}
+	
+	/**
+	 * 根据关键词搜索文章标题列表
+	 * 
+	 * @param String keyword
+	 * @return List<String>
+	 */
+	public List<String> getTitles(String keyword){
+		ContentVoExample contentVoExample = new ContentVoExample();
+		ContentVoExample.Criteria criteria = contentVoExample.createCriteria();
+		criteria.andTypeEqualTo(Types.ARTICLE.getType());
+		criteria.andStatusEqualTo(Types.PUBLISH.getType());
+		criteria.andTitleLike("%" + keyword + "%");
+		contentVoExample.setOrderByClause("created desc");
+		List<ContentVo> contentVos = contentDao.selectByExampleWithBLOBs(contentVoExample);
+		List<String> title = new ArrayList<String>();
+		//遍历contentVos，获取标题列表
+		int size = contentVos.size();
+		for(int i = 0;i < size;i++){
+			ContentVo contentVo= contentVos.get(i);
+			title.add(contentVo.getTitle());
+		}
+		return title;
 	}
 
 	@Override
