@@ -74,6 +74,17 @@ public class IndexController extends BaseController {
 			@RequestParam(value = "limit", defaultValue = "12") int limit, String keyword) {
 		PageInfo<ContentVo> articles = contentService.getArticles(keyword, 1, limit);
 		request.setAttribute("articles", articles);
+		request.setAttribute("key", "user/search/" + keyword);//把keyword传递给search_list.html页面便于查找下一页
+		return this.render("search_result");
+	}
+	
+	@GetMapping(value = "user/search/{keyword}/{page}")
+	public String listPageSearchResut(HttpServletRequest request, @PathVariable String keyword, @PathVariable int page,
+			@RequestParam(value = "limit", defaultValue = "12") int limit) {
+		page = page < 0 || page > WebConst.MAX_PAGE ? 1 : page;
+		PageInfo<ContentVo> articles = contentService.getArticles(keyword, page, limit);
+		request.setAttribute("articles", articles);
+		request.setAttribute("key", "user/search/" + keyword);//把keyword传递给search_list.html页面便于查找下一页
 		return this.render("search_result");
 	}
 
