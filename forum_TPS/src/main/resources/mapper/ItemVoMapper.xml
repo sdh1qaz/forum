@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.blog.website.dao.ItemVoMapper">
+	<resultMap id="BaseResultMap" type="com.my.blog.website.model.Vo.ItemVo">
+		<id column="id" jdbcType="INTEGER" property="itemId" />
+		<result column="cont" jdbcType="VARCHAR" property="cont" />
+		<result column="deadline" jdbcType="INTEGER" property="deadLine" />
+		<result column="creat_time" jdbcType="INTEGER" property="creatTime" />
+		<result column="person" jdbcType="VARCHAR" property="person" />
+	</resultMap>
+	
+	<!-- 查 -->
+	<select id="selectAll" resultMap="BaseResultMap">
+		select * from t_items
+	</select>
+	
+	<!-- 删 -->
+	<delete id="deleteByItemId" parameterType="java.lang.Integer">
+		delete from t_items where id = #{itemId,jdbcType=INTEGER}
+	</delete>
+	
+	<!-- 增 -->
+	<insert id="insert" parameterType="com.my.blog.website.model.Vo.ItemVo"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into t_items ( id, cont ,deadline, creat_time, person)
+		values (#{itemId,jdbcType=INTEGER},#{cont,jdbcType=VARCHAR}, #{deadLine,jdbcType=INTEGER},
+		#{creatTime,jdbcType=INTEGER},#{person,jdbcType=VARCHAR})
+	</insert>
+	
+	<!-- 改 -->
+	<update id="updateByItemId" parameterType="map">
+		update t_items
+		<set>
+			<if test="itemVo.itemId != null">
+				id = #{itemVo.itemId,jdbcType=INTEGER},
+			</if>
+			<if test="itemVo.cont != null">
+				id = #{itemVo.cont,jdbcType=VARCHAR},
+			</if>
+			<if test="itemVo.deadLine != null">
+				deadline = #{itemVo.deadLine,jdbcType=INTEGER},
+			</if>
+			<if test="itemVo.creatTime != null">
+				creat_time = #{itemVo.creatTime,jdbcType=INTEGER},
+			</if>
+			<if test="itemVo.person != null">
+				person = #{itemVo.person,jdbcType=VARCHAR}
+			</if>
+		</set>
+	</update>
+	
+</mapper>

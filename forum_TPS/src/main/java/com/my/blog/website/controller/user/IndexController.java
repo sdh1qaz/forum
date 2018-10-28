@@ -1,5 +1,25 @@
 package com.my.blog.website.controller.user;
 
+import java.net.URLEncoder;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.github.pagehelper.PageInfo;
 import com.my.blog.website.constant.WebConst;
 import com.my.blog.website.controller.BaseController;
@@ -11,28 +31,17 @@ import com.my.blog.website.model.Bo.CommentBo;
 import com.my.blog.website.model.Bo.RestResponseBo;
 import com.my.blog.website.model.Vo.CommentVo;
 import com.my.blog.website.model.Vo.ContentVo;
+import com.my.blog.website.model.Vo.ItemVo;
 import com.my.blog.website.model.Vo.MetaVo;
 import com.my.blog.website.service.ICommentService;
 import com.my.blog.website.service.IContentService;
+import com.my.blog.website.service.IItemVoService;
 import com.my.blog.website.service.IMetaService;
 import com.my.blog.website.service.ISiteService;
 import com.my.blog.website.utils.IPKit;
 import com.my.blog.website.utils.PatternKit;
 import com.my.blog.website.utils.TaleUtils;
 import com.vdurmont.emoji.EmojiParser;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.net.URLEncoder;
-import java.util.List;
 
 @Controller
 public class IndexController extends BaseController {
@@ -49,6 +58,9 @@ public class IndexController extends BaseController {
 
 	@Resource
 	private ISiteService siteService;
+	
+	@Resource
+	private IItemVoService itemVoService;
 
 	/**
 	 * 首页
@@ -78,6 +90,19 @@ public class IndexController extends BaseController {
 		return this.render("search_result");
 	}
 	
+	/**
+	 * 待办按钮响应
+	 * 
+	 * @return 待办页面
+	 */
+	@RequestMapping("user/listToDo")
+	public String listToDo(HttpServletRequest request,
+			@RequestParam(value = "limit", defaultValue = "12") int limit) {
+		PageInfo<ItemVo> pageInfo = itemVoService.getItems(1,limit);
+		request.setAttribute("pageInfo", pageInfo);
+		return this.render("todo");
+	}
+	
 	@GetMapping(value = "user/search/{keyword}/{page}")
 	public String listPageSearchResut(HttpServletRequest request, @PathVariable String keyword, @PathVariable int page,
 			@RequestParam(value = "limit", defaultValue = "12") int limit) {
@@ -88,6 +113,7 @@ public class IndexController extends BaseController {
 		return this.render("search_result");
 	}
 
+	
 	/**
 	 * 后台文章管理根据题目关键词搜索文章
 	 * 

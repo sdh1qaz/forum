@@ -19,7 +19,7 @@
 	background: #FFF;
 	position: absolute;
 	top: 60px;
-	left: 117px;
+	left: 72px;
 	color: #323232;
 }
 
@@ -484,7 +484,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .text-search {
 	position: absolute;
 	width: 300px;
-	left: 470px;
+	left: 500px;
 	top: -15px;
 	height: 100%;
 }

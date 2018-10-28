@@ -34,6 +34,9 @@
 				<button type="button" class="btn btn-primary" id="searchButton"
 					onclick="searchBykeyWord()">搜索</button>
 					<div id="auto_div"></div>
+				<button type="button" class="btn btn-primary" id="toDoListutton"
+					onclick="toDoList()">待办</button>
+					<div id="auto_div"></div>
 			</div>
 		</div>
 		<script>
@@ -41,6 +44,10 @@
 			function searchBykeyWord() {
 				var keyword = document.getElementById("search-inp").value;//原生js获取输入的关键字
 				window.location.href = '/user/search?keyword=' + keyword;
+			}
+			
+			function toDoList() {
+				window.location.href = '/user/listToDo';
 			}
 			$(function() {
 				$.ajax({
