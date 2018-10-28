@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -731,7 +730,9 @@ input {
 
 button {
 	height: 30px;
-	width: 40px
+	width: 40px;
+	color: #333;
+	background: #00c2ff;
 }
 
 .post-lists-body {
@@ -1845,7 +1846,11 @@ button {
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -1868,7 +1873,11 @@ keyframes slideDown { 0%{
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -1883,7 +1892,11 @@ transform
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -1905,7 +1918,11 @@ transform
 
 
 
+
+
 :translateY(-80px)
+
+
 
 
 
@@ -1928,7 +1945,11 @@ keyframes slideUp { 0%{
 
 
 
+
+
 :translateY(-80px)
+
+
 
 
 
@@ -1943,7 +1964,11 @@ transform
 
 
 
+
+
 :translateY(-80px)
+
+
 
 
 
@@ -1966,7 +1991,11 @@ transform
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -1981,7 +2010,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -2004,7 +2037,11 @@ opacity
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -2019,7 +2056,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
