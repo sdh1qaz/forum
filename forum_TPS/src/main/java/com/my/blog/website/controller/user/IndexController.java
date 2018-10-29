@@ -95,12 +95,12 @@ public class IndexController extends BaseController {
 	 * 
 	 * @return 待办页面
 	 */
-	@RequestMapping("user/listToDo")
+	@RequestMapping("user/listItems")
 	public String listToDo(HttpServletRequest request,
 			@RequestParam(value = "limit", defaultValue = "12") int limit) {
 		PageInfo<ItemVo> pageInfo = itemVoService.getItems(1,limit);
 		request.setAttribute("pageInfo", pageInfo);
-		return this.render("todo");
+		return this.render("items");
 	}
 	
 	@GetMapping(value = "user/search/{keyword}/{page}")

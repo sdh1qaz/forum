@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"></meta>
+	<title>待办事项</title>
+	<link rel="icon" th:href="@{user/img/favicon_64.ico}" />
+	<link rel="shortcut icon" th:href="@{user/img/favicon_64.ico}" />
+	<script th:src="@{http://127.0.0.1:8687/dependents/jquery/jquery.min.js}"></script>
+	<script th:src="@{http://127.0.0.1:8687/dependents/bootstrap/js/bootstrap.js}"></script>
+	<link rel="stylesheet" th:href="@{http://127.0.0.1:8687/dependents/bootstrap/css/bootstrap.min.css}" />
+	<script  th:src="@{http://127.0.0.1:8687/dependents/bootstrap-table/1.9.1/bootstrap-table.js}"></script>
+	<script th:src="@{http://127.0.0.1:8687/dependents/bootstrap-table/1.9.1/bootstrap-table-locale-all.js}"></script>
+	<link rel="stylesheet" th:href="@{http://127.0.0.1:8687/dependents/bootstrap-table/1.9.1/bootstrap-table.css}" />
+	<link rel="stylesheet" th:href="@{http://127.0.0.1:8687/dependents/fontAwesome/css/font-awesome.min.css}" media="all" />
+	<script th:src="@{http://127.0.0.1:8687/dependents/layer/layer.js}"></script>
+	<link rel="stylesheet" th:href="@{http://127.0.0.1:8687/dependents/laydate/need/laydate.css}" />
+	<script th:src="@{http://127.0.0.1:8687/dependents/laydate/laydate.js}"></script>
+	<link rel="stylesheet" th:href="@{http://127.0.0.1:8687/user/css/base.css}"/>
+</head>
+<body>
+	<div class="items-pannel">
+		<div class="container-fluid">
+			<!-- <div class="row-fluid">
+				<div class="span12">
+					<div class="control-group form-inline"
+						style="border: 1px solid #ccc; padding: 10px; border-radius: 3px;">
+						<div class="input-group input-group-sm">
+							<label for="csfBusinessCode">csf_business_code</label> <input
+								id="csfBusinessCode" type="text" autocomplete="off" />
+						</div>
+						<button id="btn_search" type="button"
+							class="btn btn-primary btn-sm">
+							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+						</button>
+						<button id="btn_clean_search" type="button"
+							class="btn btn-danger btn-sm">清空条件</button>
+					</div>
+				</div>
+			</div> -->
+
+			<div id="toolbar" class="btn-group">
+				<!-- 工具栏 -->
+				<button id="btn_add" type="button" class="btn btn-default btn-sm">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+				</button>
+				<button id="btn_refresh" type="button"
+					class="btn btn-default btn-sm">
+					<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>刷新
+				</button>
+			</div>
+
+			<!-- 表格 -->
+			<table id="tb_items"
+				class="table table-striped table-hover table-bordered"
+				style="word-break: break-all; word-wrap: break-all;">
+			</table>
+
+			<!-- 新增或修改弹框 -->
+			<div class="modal fade" id="addAndUpdate" tabindex="-1" role="dialog"
+				aria-labelledby="addAndUpdateLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+							<h4 class="modal-title" id="addAndUpdateLabel">新增或修改待办</h4>
+						</div>
+						
+						<div class="modal-body">
+							<input type="hidden" name="txt_type" class="form-control"
+								id="txt_type" placeholder="操作类型" /> 
+							<input type="hidden"
+								name="id" class="form-control" id="_id"/>
+							<div class="form-group">
+								<label for="txt_name">事项</label> <input
+									type="text" name="cont" class="form-control"
+									id="cont" placeholder="输入要办的事儿..."></input>
+							</div>
+							<div class="form-group">
+								<label for="txt_name">干系人</label> <input
+									type="text" name="person" class="form-control"
+									id="person" placeholder="和这事有关系的人..."></input>
+							</div>
+							<div class="form-group">
+								<label class="control-label">要求完成时间</label> <input
+									type="text" name="deadLine" class="form-control"
+									id="deadLine" placeholder="啥时候儿完成？"></input>
+							</div>
+							<div class="form-group">
+								<label for="txt_pwd">创建时间</label> <input type="text"
+									name="creatTime" class="form-control" id="creatTime"
+									placeholder="啥时候创建的待办？"></input>
+							</div>
+						</div>
+						
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default btn-sm"
+								data-dismiss="modal">
+								<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+							</button>
+							<button type="button" id="btn_add_update_submit"
+								class="btn btn-primary btn-sm" data-dismiss="modal">
+								<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+							</button>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<script th:src="@{http://127.0.0.1:8687/user/js/table.js}"></script>
+			<script th:src="@{http://127.0.0.1:8687/user/js/table_crud.js}"></script>
+		</div>
+	</div>
+</body>
+</html>

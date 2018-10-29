@@ -1,5 +1,9 @@
 package com.my.blog.website.service;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import com.github.pagehelper.PageInfo;
 import com.my.blog.website.model.Vo.ItemVo;
 
@@ -16,8 +20,14 @@ public interface IItemVoService {
 	 * 查询待办返回多条数据
 	 * @param p 当前页
 	 * @param limit 每页条数
-	 * @return ContentVo
+	 * @return PageInfo<ItemVo>
 	 */
 	PageInfo<ItemVo> getItems(Integer p, Integer limit);
+	
+	/**
+	 * 查询所有待办返回
+	 * @return List<ItemVo>
+	 */
+	List<ItemVo> getAllItems();
 
 }

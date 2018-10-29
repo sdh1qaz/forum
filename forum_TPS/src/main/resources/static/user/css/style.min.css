@@ -11,6 +11,13 @@
 	-moz-osx-font-smoothing: grayscale
 }
 
+.button-header {
+	height: 30px;
+	width: 40px;
+	color: #333;
+	background: #00c2ff
+}
+
 #auto_div {
 	display: none;
 	width: 300px;
@@ -726,13 +733,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 input {
 	height: 30px;
 	width: 140px;
-}
-
-button {
-	height: 30px;
-	width: 40px;
-	color: #333;
-	background: #00c2ff
 }
 
 .post-lists-body {
@@ -1848,7 +1848,11 @@ button {
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -1875,7 +1879,11 @@ keyframes slideDown { 0%{
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -1894,7 +1902,11 @@ transform
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -1920,7 +1932,11 @@ transform
 
 
 
+
+
 :translateY(-80px)
+
+
 
 
 
@@ -1947,7 +1963,11 @@ keyframes slideUp { 0%{
 
 
 
+
+
 :translateY(-80px)
+
+
 
 
 
@@ -1966,7 +1986,11 @@ transform
 
 
 
+
+
 :translateY(-80px)
+
+
 
 
 
@@ -1993,7 +2017,11 @@ transform
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -2012,7 +2040,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -2039,7 +2071,11 @@ opacity
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -2058,7 +2094,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 

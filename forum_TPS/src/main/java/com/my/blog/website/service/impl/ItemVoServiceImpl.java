@@ -24,6 +24,7 @@ public class ItemVoServiceImpl implements IItemVoService{
 	
 	@Resource
 	private ItemVoMapper itemDao;
+	
 	/**
 	 * 查询待办返回多条数据
 	 * @param p 当前页
@@ -34,6 +35,14 @@ public class ItemVoServiceImpl implements IItemVoService{
 		PageHelper.startPage(p, limit);
 		List<ItemVo> items = itemDao.selectAll();
 		return new PageInfo<>(items);
+	}
+	
+	/**
+	 * 查询所有待办返回
+	 * @return List<ItemVo>
+	 */
+	public List<ItemVo> getAllItems(){
+		return itemDao.selectAll();
 	}
 
 }

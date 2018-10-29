@@ -31,11 +31,11 @@
 			</a>
 			<div class="text-search">
 				<input type="text" id="search-inp" placeholder="请输入关键字..."/>
-				<button type="button" class="btn btn-primary" id="searchButton"
-					onclick="searchBykeyWord()">搜索</button>
+				<input type="button" class="button-header" id="searchButton"
+					onclick="searchBykeyWord()" value="搜索"/>
 					<div id="auto_div"></div>
-				<button type="button" class="btn btn-primary" id="toDoListutton"
-					onclick="toDoList()">待办</button>
+				<input type="button" class="button-header" id="toDoListutton"
+					onclick="toDoList()" value="待办"/>
 					<div id="auto_div"></div>
 			</div>
 		</div>
@@ -47,7 +47,7 @@
 			}
 			
 			function toDoList() {
-				window.location.href = '/user/listToDo';
+				window.location.href = '/user/listItems';
 			}
 			$(function() {
 				$.ajax({
