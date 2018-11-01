@@ -60,7 +60,7 @@ public class UploadController {
 		extMap.put("file", "doc,docx,xls,xlsx,ppt,htm,html,txt,zip,rar,gz,bz2");
 
 		// 最大文件大小 10M
-		long maxSize = 1000000;
+		long maxSize = 10000000;
 
 		response.reset();//清楚response中缓存的数据
         response.setCharacterEncoding("UTF-8");  //设置发送给客户端的响应的字符编码（MIME字符集）
