@@ -20,6 +20,7 @@ public class ItemVo implements Serializable{
 	private Integer deadLine;//截止时间
 	private String person;//相关人
 	private Integer creatTime;//创建时间
+	private String priority;//优先级
 	
 	public String getPerson() {
 		return person;
@@ -51,5 +52,12 @@ public class ItemVo implements Serializable{
 	public void setCont(String cont) {
 		this.cont = cont;
 	}
+	public String getPriority() {
+		return priority;
+	}
+	public void setPriority(String priority) {
+		this.priority = priority;
+	}
+	
 	
 }

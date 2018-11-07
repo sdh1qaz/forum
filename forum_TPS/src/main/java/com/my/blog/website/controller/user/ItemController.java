@@ -29,7 +29,7 @@ public class ItemController {
 	@Resource
 	private IItemVoService iItemVoService;
 	
-	//返回所有的待办数据
+	//返回所有待办
 	@RequestMapping(value = "/getItems", method = RequestMethod.POST)
 	public Pages<ItemVo> getItems(HttpServletRequest request){
 		//String id = request.getParameter("id");
@@ -53,5 +53,47 @@ public class ItemController {
 		pages.setTotal(total);
 		pages.setStatus(0);
 		return pages;
+	}
+	
+	//增加一条待办
+	@RequestMapping(value = "/insertItem", method = RequestMethod.POST)
+	public String addItem(ItemVo itemVo,HttpServletRequest request) {
+		itemVo.setCont(request.getParameter("cont"));//待办内容
+		itemVo.setPriority(request.getParameter("priority"));//待办优先级
+		itemVo.setDeadLine(Integer.valueOf(request.getParameter("deadLine")));//截止时间
+		itemVo.setPerson(request.getParameter("person"));//干系人
+		//生成时间戳  创建时间
+		itemVo.setCreatTime(new Integer((int)(System.currentTimeMillis() / 1000)));
+		int result = iItemVoService.insert(itemVo);
+		System.out.println("*******************" + result);
+		if(result != -1)
+			return "success";
+		else
+			return "fail";
+	}
+	
+	//删除一条待办
+	@RequestMapping(value = "/deleteItem", method = RequestMethod.POST)
+	public String deleteItem(HttpServletRequest request) {
+		Integer itemId = new Integer(request.getParameter("itemId"));
+		int result = iItemVoService.deleteByItemId(itemId);
+		if(result != -1)
+			return "success";
+		else
+			return "fail";
+	}
+	
+	//更新一条待办
+	@RequestMapping(value = "/updateItem", method = RequestMethod.POST)
+	public String updateItem(ItemVo itemVo,HttpServletRequest request) {
+		itemVo.setCont(request.getParameter("cont"));//待办内容
+		itemVo.setDeadLine(Integer.valueOf(request.getParameter("deadLine")));//截止时间
+		itemVo.setPerson(request.getParameter("person"));//干系人
+		itemVo.setPriority(request.getParameter("priority"));
+		int result = iItemVoService.updateByItemId(itemVo);
+		if(result != -1)
+			return "success";
+		else
+			return "fail";
 	}
 }

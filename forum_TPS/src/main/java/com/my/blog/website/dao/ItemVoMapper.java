@@ -14,17 +14,17 @@ import com.my.blog.website.model.Vo.ItemVo;
  */
 
 public interface ItemVoMapper {
-	
+	//新增一条待办
 	int insert(ItemVo itemVo);
 	
+	//查询所有待办
 	List<ItemVo> selectAll();
 	
-	int deleteByItemId(String itemId);
+	//删除一条待办
+	int deleteByItemId(Integer itemId);
 	
+	//更新一条待办
 	int updateByItemId(@Param("itemVo") ItemVo itemVo);
 	
 	
-	
-	
-
 }

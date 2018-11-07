@@ -97,15 +97,15 @@ function tableInit() {
 		},
 		columns : [
 		{
-			title : '待办id',
-			field : 'itemId',
-			align : 'center',
-			valign : 'middle'
-		}, 
-		{
 			title : '待办事项',
 			field : 'cont',
 			width : 300,
+			align : 'center',
+			valign : 'middle'
+		},{
+			title : '优先级',
+			field : 'priority',
+			width : 80,
 			align : 'center',
 			valign : 'middle'
 		}, {
@@ -200,7 +200,7 @@ window.operateEvents = {
 		editData(row);
 	},
 	'click #remove' : function(e, value, row, index) {
-		delData(row.id);
+		delData(row.itemId);
 	}
 };
 

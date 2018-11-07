@@ -56,22 +56,21 @@ $("#addAndUpdate").on("hidden.bs.modal", function() {
 
 // 删除除一行按钮点击事件
 function delData(id) {
-	layer.confirm('id=' + id + '的数据?', {
+	layer.confirm('itemId=' + id + '的数据?', {
 		icon : 3,
 		title : '提示'
 	}, function() {
 		$.ajax({
-			url : '/curd/deleteCsfBusi',
+			url : 'items/deleteItem',
 			method : 'post',
 			contentType : "application/x-www-form-urlencoded",
 			// 阻止深度序列化，向后台传送数组
 			traditional : true,
 			data : {
-				csfBusPro : tb_current,
-				csfBusinessId : csfBusinessId
+				itemId : id
 			},
 			success : function(res) {
-				if (res.returnCode == 0) {
+				if (res == 'success') {
 					layer.msg('删除成功', {
 						icon : 1,
 						time : 2000
@@ -88,14 +87,15 @@ function delData(id) {
 	});
 }
 
-// 编辑数据，编辑按钮点击事件
+// 编辑按钮点击事件
 function editData(row) {
 	// 向模态框中传值
-	$('#csf_business_code').val(row.csfBusinessCode);
-	$('#in_params_template').val(row.inParamsTemplate);
-	$('#mock_data').val(row.mockData);
-	$('#csf_business_id').val(row.csfBusinessId);
-	$('#addAndUpdateLabel').text("修改记录");
+	$('#itemId').val(row.itemId);// 待办id
+	$('#cont').val(row.cont);// 事项内容
+	$('#deadLine').val(row.deadLine);// 要求完成时间
+	$('#person').val(row.person);// 干系人
+	$('#priority').val(row.priority);//优先级
+	$('#addAndUpdateLabel').text("修改待办");
 
 	// 显示模态窗口
 	$('#addAndUpdate').modal({
@@ -104,35 +104,41 @@ function editData(row) {
 	});
 }
 
-// 修改或新增一条记录，弹窗保存按钮出发
+//编辑或保存 弹窗保存按钮事件
 $("#btn_add_update_submit")
 		.off()
 		.on(
 				'click',
 				function() {
-					var csfBusinessCode = $('#csf_business_code').val(), inParamsTemplate = $(
-							'#in_params_template').val(), mockData = $(
-							'#mock_data').val(), csfBusinessId = $(
-							'#csf_business_id').val(), txt_type = $('#txt_type')
-							.val();
+					var itemId = $('#itemId').val(), cont = $(
+							'#cont').val(),priority = $('#priority').val(),
+							deadLine = $('#deadLine').val(), person = $(
+							'#person').val(), txt_type = $('#txt_type').val();
 
-					// 验证数据
-					if (!csfBusinessCode) {
-						layer.msg('请填写csf_business_code!', {
+					// 验证数据，不能为空
+					if (!cont) {
+						layer.msg('请填写待办内容!', {
 							icon : 2,
 							time : 1500
 						});
 						return false;
 					}
-					if (!inParamsTemplate) {
-						layer.msg('请填写in_params_template!', {
+					if (!priority) {
+						layer.msg('请填写待办优先级!', {
 							icon : 2,
 							time : 1500
 						});
 						return false;
 					}
-					if (!mockData) {
-						layer.msg('请填写mock_data!', {
+					if (!deadLine) {
+						layer.msg('请填写要求的完成时间!', {
+							icon : 2,
+							time : 1500
+						});
+						return false;
+					}
+					if (!person) {
+						layer.msg('请填写关系人!', {
 							icon : 2,
 							time : 1500
 						});
@@ -140,25 +146,26 @@ $("#btn_add_update_submit")
 					}
 					var url;
 					if (txt_type == 'add') {
-						url = '/curd/insertCsfBusi';
+						url = 'items/insertItem';
 					} else {
-						url = '/curd/updateCsfBusi';
+						url = 'items/updateItem';
 					}
 					$.ajax({
 						url : url,
 						method : 'post',
+						dataType : 'text',//返回纯文本字符串 
 						contentType : "application/x-www-form-urlencoded",
 						data : {
-							csfBusinessCode : csfBusinessCode,
-							inParamsTemplate : inParamsTemplate,
-							mockData : mockData,
-							csfBusinessId : csfBusinessId,
-							csfBusPro : tb_current
+							itemId : itemId,
+							priority : priority,
+							cont : cont,
+							deadLine : deadLine,
+							person : person
 						},
 						// 阻止深度序列化，向后台传送数组
 						traditional : true,
 						success : function(res) {
-							if (res.returnCode == 0) {
+							if (res == 'success') {
 								layer.msg('保存成功', {
 									icon : 1,
 									time : 1500

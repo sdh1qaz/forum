@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.github.pagehelper.PageInfo;
 import com.my.blog.website.model.Vo.ItemVo;
 
@@ -25,9 +27,27 @@ public interface IItemVoService {
 	PageInfo<ItemVo> getItems(Integer p, Integer limit);
 	
 	/**
-	 * 查询所有待办返回
+	 * 查询所有待办
 	 * @return List<ItemVo>
 	 */
 	List<ItemVo> getAllItems();
+	
+	/**
+	 * 新增一条待办
+	 * @return int
+	 */
+	int insert(ItemVo itemVo);
+	
+	/**
+	 * 删除一条待办
+	 * @return int
+	 */
+	int deleteByItemId(Integer itemId);
+	
+	/**
+	 * 更新一条待办
+	 * @return int
+	 */
+	int updateByItemId(@Param("itemVo") ItemVo itemVo);
 
 }

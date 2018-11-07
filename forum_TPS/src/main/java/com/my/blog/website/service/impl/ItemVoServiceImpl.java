@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
@@ -43,6 +44,30 @@ public class ItemVoServiceImpl implements IItemVoService{
 	 */
 	public List<ItemVo> getAllItems(){
 		return itemDao.selectAll();
+	}
+	
+	/**
+	 * 新增一条待办
+	 * @return int
+	 */
+	public int insert(ItemVo itemVo) {
+		return itemDao.insert(itemVo);
+	}
+	
+	/**
+	 * 删除一条待办
+	 * @return int
+	 */
+	public int deleteByItemId(Integer itemId) {
+		return itemDao.deleteByItemId(itemId);
+	}
+	
+	/**
+	 * 更新一条待办
+	 * @return int
+	 */
+	public int updateByItemId(@Param("itemVo") ItemVo itemVo) {
+		return itemDao.updateByItemId(itemVo);
 	}
 
 }
