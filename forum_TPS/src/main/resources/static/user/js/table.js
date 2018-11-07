@@ -135,7 +135,7 @@ function tableInit() {
 		responseHandler : function(res) {
 			var obj = {
 					"total" : res.total,//总条数
-					"rows" : res.records,//ItemVo列表
+					"rows" : format(res.records),//ItemVo列表
 			};
 			return obj;
 		},
@@ -184,6 +184,17 @@ function genderDel(value, row, index) {
 	} else if (value == 0) {
 		return "正常";
 	}
+}
+
+//处理rows中的日期，Integer转化为字符串日期
+function format(rows){
+	var size = rows.length;
+	var temp;
+	for(i = 0;i < size; i++){
+		temp = rows[i].creatTime;
+		rows[i].creatTime = new Date(temp*1000).toLocaleString();
+	}
+	return rows;	
 }
 
 // 每行表格中的编辑和删除标志

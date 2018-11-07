@@ -32,10 +32,8 @@ public class ItemController {
 	//返回所有待办
 	@RequestMapping(value = "/getItems", method = RequestMethod.POST)
 	public Pages<ItemVo> getItems(HttpServletRequest request){
-		//String id = request.getParameter("id");
 		String limit = request.getParameter("limit");
 		String nowPage = request.getParameter("nowPage");
-		// String order = request.getParameter("order");
 		List<ItemVo> items = iItemVoService.getAllItems();
 		// 当前页数
 		int nowPaged = Integer.parseInt(null == nowPage ? "1" : nowPage);
