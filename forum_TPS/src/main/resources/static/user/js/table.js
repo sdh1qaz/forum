@@ -100,7 +100,7 @@ function tableInit() {
 			title : '待办事项',
 			field : 'cont',
 			width : 300,
-			align : 'center',
+			align : 'left',
 			valign : 'middle'
 		},{
 			title : '优先级',
@@ -109,12 +109,12 @@ function tableInit() {
 			align : 'center',
 			valign : 'middle'
 		}, {
-			title : '干系人',
+			title : '关系人',
 			field : 'person',
 			align : 'center',
 			valign : 'middle'
 		}, {
-			title : '要求完成时间',
+			title : '时间要求',
 			field : 'deadLine',
 			align : 'center',
 			width : 120,

@@ -17,7 +17,7 @@ public class ItemVo implements Serializable{
 	private static final long serialVersionUID = 7289093439854542275L;
 	private Integer itemId;//待办事项Id
 	private String  cont;//待办事项内容
-	private Integer deadLine;//截止时间
+	private String deadLine;//截止时间
 	private String person;//相关人
 	private Integer creatTime;//创建时间
 	private String priority;//优先级
@@ -34,10 +34,11 @@ public class ItemVo implements Serializable{
 	public void setItemId(Integer itemId) {
 		this.itemId = itemId;
 	}
-	public Integer getDeadLine() {
+	
+	public String getDeadLine() {
 		return deadLine;
 	}
-	public void setDeadLine(Integer deadLine) {
+	public void setDeadLine(String deadLine) {
 		this.deadLine = deadLine;
 	}
 	public Integer getCreatTime() {

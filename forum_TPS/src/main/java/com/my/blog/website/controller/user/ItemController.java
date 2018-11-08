@@ -58,7 +58,7 @@ public class ItemController {
 	public String addItem(ItemVo itemVo,HttpServletRequest request) {
 		itemVo.setCont(request.getParameter("cont"));//待办内容
 		itemVo.setPriority(request.getParameter("priority"));//待办优先级
-		itemVo.setDeadLine(Integer.valueOf(request.getParameter("deadLine")));//截止时间
+		itemVo.setDeadLine(request.getParameter("deadLine"));//截止时间
 		itemVo.setPerson(request.getParameter("person"));//干系人
 		//生成时间戳  创建时间
 		itemVo.setCreatTime(new Integer((int)(System.currentTimeMillis() / 1000)));
@@ -85,7 +85,7 @@ public class ItemController {
 	@RequestMapping(value = "/updateItem", method = RequestMethod.POST)
 	public String updateItem(ItemVo itemVo,HttpServletRequest request) {
 		itemVo.setCont(request.getParameter("cont"));//待办内容
-		itemVo.setDeadLine(Integer.valueOf(request.getParameter("deadLine")));//截止时间
+		itemVo.setDeadLine(request.getParameter("deadLine"));//截止时间
 		itemVo.setPerson(request.getParameter("person"));//干系人
 		itemVo.setPriority(request.getParameter("priority"));
 		int result = iItemVoService.updateByItemId(itemVo);
