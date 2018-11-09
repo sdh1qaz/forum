@@ -73,12 +73,12 @@ function delData(id) {
 				if (res == 'success') {
 					layer.msg('删除成功', {
 						icon : 1,
-						time : 2000
+						time : 1000
 					});
 				} else {
 					layer.msg('删除失败', {
 						icon : 2,
-						time : 2000
+						time : 1000
 					});
 				}
 				refresh();
@@ -119,28 +119,28 @@ $("#btn_add_update_submit")
 					if (!cont) {
 						layer.msg('请填写待办内容!', {
 							icon : 2,
-							time : 1500
+							time : 1000
 						});
 						return false;
 					}
 					if (!priority) {
 						layer.msg('请填写待办优先级!', {
 							icon : 2,
-							time : 1500
+							time : 1000
 						});
 						return false;
 					}
 					if (!deadLine) {
 						layer.msg('请填写要求的完成时间!', {
 							icon : 2,
-							time : 1500
+							time : 1000
 						});
 						return false;
 					}
 					if (!person) {
 						layer.msg('请填写关系人!', {
 							icon : 2,
-							time : 1500
+							time : 1000
 						});
 						return false;
 					}
@@ -168,12 +168,12 @@ $("#btn_add_update_submit")
 							if (res == 'success') {
 								layer.msg('保存成功', {
 									icon : 1,
-									time : 1500
+									time : 1000
 								});
 							} else {
 								layer.msg('保存失败', {
 									icon : 2,
-									time : 1500
+									time : 1000
 								});
 							}
 							refresh();
