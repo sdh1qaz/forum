@@ -94,4 +94,14 @@ public class ItemController {
 		else
 			return "fail";
 	}
+	
+	//是否有待办
+	@RequestMapping(value = "/isHasItems", method = RequestMethod.GET)
+	public String isHasItems() {
+		List<ItemVo> items = iItemVoService.getAllItems();
+		if(items.size() > 0)
+			return "yes";
+		else
+			return "no";
+	}
 }

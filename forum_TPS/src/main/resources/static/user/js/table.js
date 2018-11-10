@@ -114,7 +114,7 @@ function tableInit() {
 			align : 'center',
 			valign : 'middle'
 		}, {
-			title : '时间要求',
+			title : '要求',
 			field : 'deadLine',
 			align : 'center',
 			width : 120,

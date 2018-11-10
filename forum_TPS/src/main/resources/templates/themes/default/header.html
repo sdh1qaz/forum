@@ -29,14 +29,14 @@
 			<a th:href="@{/forum}" class="navbar-logo"> <!-- thymeleaf标签 -->
 				<img th:src="@{/user/img/logo1.jpg}" alt="首页" />小书包
 			</a>
+			
 			<div class="text-search">
+				
 				<input type="text" id="search-inp" placeholder="请输入关键字..."/>
 				<input type="button" class="button-header" id="searchButton"
 					onclick="searchBykeyWord()" value="搜索"/>
-					<div id="auto_div"></div>
-				<input type="button" class="button-header" id="toDoListutton"
+					<input type="button" class="button-header" id="toDoListutton"
 					onclick="toDoList()" value="待办"/>
-					<div id="auto_div"></div>
 			</div>
 		</div>
 		<script>
