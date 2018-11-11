@@ -47,7 +47,21 @@
 				var keyword = document.getElementById("search-inp").value;//原生js获取输入的关键字
 				window.location.href = '/user/search?keyword=' + keyword;
 			}
-			
+			//设置定时器，每一个小时提醒一次待办事项
+			var timer = self.setInterval("remind()",1000*3600);
+			function remind(){
+				$.ajax({
+					url : "/user/items/isHasItems",
+					type : "GET",
+					dataType : 'text',
+					success : function(data) {
+						if(data == 'yes'){
+							alert('您有待办未处理！');
+							//window.location.href = '/user/listItems';
+						}
+					}
+				});
+			}
 			function toDoList() {
 				window.location.href = '/user/listItems';
 			}
