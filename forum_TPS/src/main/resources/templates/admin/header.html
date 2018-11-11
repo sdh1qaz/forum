@@ -41,9 +41,8 @@
 						<button type="button" class="button-menu-mobile open-left">
 							<i class="fa fa-bars"></i>
 						</button>
-						<span class="clearfix"></span>
+						<label id="navigation_title"> 页面标题</label> <span class="clearfix"></span>
 					</div>
-
 					<ul class="nav navbar-nav navbar-right pull-right">
 						<li class="dropdown"><a th:href="@{index.html}"
 							class="dropdown-toggle profile" data-toggle="dropdown"
@@ -71,37 +70,37 @@
 						th:href="@{/forum}"
 						th:class="${active}=='setting'?'waves-effect active':'waves-effect'"><i
 							class="fa fa-gear" aria-hidden="true"></i><span> 回到首页 </span></a></li>
-							
+
 					<li th:class="${active}=='home'?'active':''"><a
-						th:href="@{/admin/index}"
+						th:href="@{/admin/index?title=ybp}"
 						th:class="${active}=='home'?'waves-effect active':'waves-effect'"><i
 							class="fa fa-dashboard" aria-hidden="true"></i><span> 仪表盘
 						</span></a></li>
-						
+
 					<li th:class="${active}=='publish'?'active':''"><a
-						th:href="@{/admin/article/publish}"
+						th:href="@{/admin/article/publish?title=fbwz}"
 						th:class="${active}=='publish'?'waves-effect active':'waves-effect'"><i
 							class="fa fa-pencil-square-o" aria-hidden="true"></i><span>
 								发布文章 </span></a></li>
-								
+
 					<li th:class="${active}=='article'?'active':''"><a
-						th:href="@{/admin/article}"
+						th:href="@{/admin/article?title=wzgl}"
 						th:class="${active}=='article'?'waves-effect active':'waves-effect'"><i
 							class="fa fa-list" aria-hidden="true"></i><span> 文章管理 </span></a></li>
-							
+
 					<li th:class="${active}=='comments'?'active':''"><a
-						th:href="@{/admin/comments}"
+						th:href="@{/admin/comments?title=plgl}"
 						th:class="${active}=='comments'?'waves-effect active':'waves-effect'"><i
 							class="fa fa-comments" aria-hidden="true"></i><span> 评论管理
 						</span></a></li>
-						
+
 					<li th:class="${active}=='category'?'active':''"><a
-						th:href="@{/admin/category}"
+						th:href="@{/admin/category?title=zzbq}"
 						th:class="${active}=='category'?'waves-effect active':'waves-effect'"><i
 							class="fa fa-tags" aria-hidden="true"></i><span> 作者/标签 </span></a></li>
-							
+
 					<li th:class="${active}=='attach'?'active':''"><a
-						th:href="@{/admin/attach}"
+						th:href="@{/admin/attach?title=wjgl}"
 						th:class="${active}=='attach'?'waves-effect active':'waves-effect'"><i
 							class="fa fa-cloud-upload" aria-hidden="true"></i><span>
 								文件管理 </span></a></li>

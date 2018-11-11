@@ -35,14 +35,14 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-12">
-							<h4 class="page-title">
+							<!-- <h4 class="page-title">
 								<th:block th:if="${null != contents}">
                                 编辑文章
                             </th:block>
 								<th:block th:unless="${null != contents}">
                                 发布文章
                             </th:block>
-							</h4>
+							</h4> -->
 						</div>
 						<div class="col-md-12">
 							<form id="articleForm" role="form" novalidate="novalidate">
@@ -160,6 +160,7 @@
 	<script th:src="@{/admin/plugins/md/js/pagedown-extra.js}"></script>
 	<script th:src="@{/admin/plugins/md/js/diff.js}"></script>
 	<script th:src="@{/admin/plugins/md/js/md.js}"></script>
+	<script th:src="@{http://127.0.0.1:8687/admin/js/title.js}"></script>
 
 	<script
 		th:src="@{//cdn.bootcss.com/multi-select/0.9.12/js/jquery.multi-select.min.js}"></script>
