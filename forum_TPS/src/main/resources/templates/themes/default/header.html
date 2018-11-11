@@ -48,7 +48,7 @@
 				window.location.href = '/user/search?keyword=' + keyword;
 			}
 			//设置定时器，每一个小时提醒一次待办事项
-			var timer = self.setInterval("remind()",1000*3600);
+			var timer = self.setInterval("remind()",1000*600);
 			function remind(){
 				$.ajax({
 					url : "/user/items/isHasItems",
