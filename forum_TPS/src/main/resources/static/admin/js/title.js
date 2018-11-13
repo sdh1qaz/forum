@@ -49,6 +49,8 @@ $(function() {
 	case 'wjgl':
 		document.getElementById("navigation_title").innerHTML = '文件管理';
 		break;
+	case null :
+		documen
 	default:
 		document.getElementById("navigation_title").innerHTML = '编辑文章';
 	}
