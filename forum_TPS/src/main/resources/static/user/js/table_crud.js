@@ -94,7 +94,8 @@ function editData(row) {
 	$('#cont').val(row.cont);// 事项内容
 	$('#deadLine').val(row.deadLine);// 要求完成时间
 	$('#person').val(row.person);// 干系人
-	$('#priority').val(row.priority);//优先级
+	//$('#priority').val(row.priority);//优先级
+	$("input[name='priority'][type=radio][value='" + row.priority + "']").attr("checked",true);
 	$('#addAndUpdateLabel').text("修改待办");
 
 	// 显示模态窗口
@@ -111,7 +112,7 @@ $("#btn_add_update_submit")
 				'click',
 				function() {
 					var itemId = $('#itemId').val(), cont = $(
-							'#cont').val(),priority = $('#priority').val(),
+							'#cont').val(),priority = $('input[name="priority"]:checked').val(),
 							deadLine = $('#deadLine').val(), person = $(
 							'#person').val(), txt_type = $('#txt_type').val();
 
