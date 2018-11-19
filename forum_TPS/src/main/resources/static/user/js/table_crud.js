@@ -3,16 +3,6 @@ function refresh() {
 	$table.bootstrapTable('refresh');
 }
 
-// 查询按钮点击事件
-$("#btn_search").on("click", function() {
-	refresh();
-});
-
-// 清空条件按钮点击事件
-$("#btn_clean_search").on("click", function() {
-	$('#csfBusinessCode').val("");
-});
-
 // 新增按钮点击事件
 $("#btn_add").on("click", function() {
 	$('#addAndUpdateLabel').text("新增待办");
@@ -51,7 +41,9 @@ $("#addAndUpdate").on("hidden.bs.modal", function() {
 	$('#person').val("");
 	$('#deadLine').val("");
 	$('#creatTime').val("");
-
+	$('#cont').val("");
+	//$("input[name='priority'][type=radio]").removeAttr("checked");//radio单选框不选中
+	//$("input:radio[name="priority"]").attr("checked",false);
 });
 
 // 删除除一行按钮点击事件
@@ -94,7 +86,6 @@ function editData(row) {
 	$('#cont').val(row.cont);// 事项内容
 	$('#deadLine').val(row.deadLine);// 要求完成时间
 	$('#person').val(row.person);// 干系人
-	//$('#priority').val(row.priority);//优先级
 	$("input[name='priority'][type=radio][value='" + row.priority + "']").attr("checked",true);
 	$('#addAndUpdateLabel').text("修改待办");
 
