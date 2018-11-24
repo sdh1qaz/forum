@@ -194,6 +194,7 @@ function AutoComplete(auto, search, mylist) {
 				highlightindex = -1;
 				// 文本框中的内容变成高亮节点的内容
 				$("#" + search).val(comText);
+				window.location.href = '/user/search?keyword=' + comText;
 			})
 			if (carlist.length > 0) { // 如果返回值有内容就显示出来
 				autoNode.show();
