@@ -74,7 +74,7 @@ function tableInit() {
 		// 分页方式：client客户端分页，server服务端分页
 		sidePagination : "server",
 		// 每页的记录行数
-		pageSize : 10,
+		pageSize : 8,
 		// 初始化加载第1页，默认第1页
 		pageNumber : 1,
 		// 可供选择的每页的行数
@@ -109,12 +109,12 @@ function tableInit() {
 			align : 'center',
 			valign : 'middle'
 		}, {
-			title : '关系人',
+			title : '和谁有关',
 			field : 'person',
 			align : 'center',
 			valign : 'middle'
 		}, {
-			title : '要求',
+			title : '备注',
 			field : 'deadLine',
 			align : 'center',
 			width : 120,
