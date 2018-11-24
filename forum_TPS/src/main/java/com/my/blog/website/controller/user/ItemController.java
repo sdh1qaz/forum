@@ -34,7 +34,7 @@ public class ItemController {
 	public Pages<ItemVo> getItems(HttpServletRequest request){
 		String limit = request.getParameter("limit");
 		String nowPage = request.getParameter("nowPage");
-		List<ItemVo> items = iItemVoService.getAllItems();
+		
 		// 当前页数
 		int nowPaged = Integer.parseInt(null == nowPage ? "1" : nowPage);
 		// 每页显示页数
@@ -42,6 +42,7 @@ public class ItemController {
 		Pages<ItemVo> pages = new Pages<>();
 		// 开始分页,参数1为请求第几页,参数2为请求条数
 		PageHelper.startPage(nowPaged, limitd);
+		List<ItemVo> items = iItemVoService.getAllItems();
 		// 取记录总条数
 		PageInfo<ItemVo> pageInfo = new PageInfo<>(items);
 		int total = (int) pageInfo.getTotal();
