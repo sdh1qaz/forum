@@ -12,7 +12,7 @@
 	
 	<!-- 查 -->
 	<select id="selectAll" resultMap="BaseResultMap">
-		select * from t_items
+		select * from t_items ORDER by creat_time DESC 
 	</select>
 	
 	<!-- 删 -->
