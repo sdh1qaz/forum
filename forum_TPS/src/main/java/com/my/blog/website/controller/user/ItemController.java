@@ -61,6 +61,7 @@ public class ItemController {
 		itemVo.setPriority(request.getParameter("priority"));//待办优先级
 		itemVo.setDeadLine(request.getParameter("deadLine"));//截止时间
 		itemVo.setPerson(request.getParameter("person"));//干系人
+		itemVo.setRemindTime(Integer.parseInt(request.getParameter("remindTime")));//提醒时间
 		//生成时间戳  创建时间
 		itemVo.setCreatTime(new Integer((int)(System.currentTimeMillis() / 1000)));
 		int result = iItemVoService.insert(itemVo);
@@ -89,6 +90,7 @@ public class ItemController {
 		itemVo.setDeadLine(request.getParameter("deadLine"));//截止时间
 		itemVo.setPerson(request.getParameter("person"));//干系人
 		itemVo.setPriority(request.getParameter("priority"));
+		itemVo.setRemindTime(Integer.parseInt(request.getParameter("remindTime")));//提醒时间
 		int result = iItemVoService.updateByItemId(itemVo);
 		if(result != -1)
 			return "success";

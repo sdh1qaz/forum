@@ -8,6 +8,7 @@
 		<result column="creat_time" jdbcType="INTEGER" property="creatTime" />
 		<result column="person" jdbcType="VARCHAR" property="person" />
 		<result column="priority" jdbcType="VARCHAR" property="priority" />
+		<result column="remind_time" jdbcType="INTEGER" property="remindTime"/>
 	</resultMap>
 	
 	<!-- 查 -->
@@ -23,9 +24,10 @@
 	<!-- 增 -->
 	<insert id="insert" parameterType="com.my.blog.website.model.Vo.ItemVo"
 		useGeneratedKeys="true" keyProperty="itemId">
-		insert into t_items ( cont ,deadline, creat_time, person,priority)
+		insert into t_items ( cont ,deadline, creat_time, person,priority,remind_time)
 		values (#{cont,jdbcType=VARCHAR}, #{deadLine,jdbcType=VARCHAR},
-		#{creatTime,jdbcType=INTEGER},#{person,jdbcType=VARCHAR},#{priority,jdbcType=VARCHAR})
+		#{creatTime,jdbcType=INTEGER},#{person,jdbcType=VARCHAR},#{priority,jdbcType=VARCHAR},
+		#{remindTime,jdbcType=INTEGER})
 	</insert>
 	
 	<!-- 改 -->
@@ -43,6 +45,9 @@
 			</if>
 			<if test="itemVo.priority != null">
 				priority = #{itemVo.priority,jdbcType=VARCHAR},
+			</if>
+			<if test="itemVo.remindTime != null">
+				remind_time = #{itemVo.remindTime,jdbcType=INTEGER},
 			</if>
 		</set>
 		where itemId = #{itemVo.itemId,jdbcType=INTEGER}

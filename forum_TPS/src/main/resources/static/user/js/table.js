@@ -125,7 +125,14 @@ function tableInit() {
 			width : 120,
 			align : 'center',
 			valign : 'middle'
-		}, {
+		}, 
+		{
+			title : '提醒时间',
+			field : 'remindTime',
+			width : 120,
+			align : 'center',
+			valign : 'middle'
+		},{
 			title : '操作',
 			field : 'operate',
 			align : 'center',

@@ -20,7 +20,8 @@ public class ItemVo implements Serializable{
 	private String deadLine;//截止时间
 	private String person;//相关人
 	private Integer creatTime;//创建时间
-	private String priority;//优先级
+	private String priority;//优先
+	private Integer remindTime;//提醒时间
 	
 	public String getPerson() {
 		return person;
@@ -59,6 +60,11 @@ public class ItemVo implements Serializable{
 	public void setPriority(String priority) {
 		this.priority = priority;
 	}
-	
+	public Integer getRemindTime() {
+		return remindTime;
+	}
+	public void setRemindTime(Integer remindTime) {
+		this.remindTime = remindTime;
+	}
 	
 }

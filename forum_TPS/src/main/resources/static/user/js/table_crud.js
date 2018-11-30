@@ -42,6 +42,7 @@ $("#addAndUpdate").on("hidden.bs.modal", function() {
 	$('#deadLine').val("");
 	$('#creatTime').val("");
 	$('#cont').val("");
+	$('#remindTime').val("");
 	//$("input[name='priority'][type=radio]").removeAttr("checked");//radio单选框不选中
 	//$("input:radio[name="priority"]").attr("checked",false);
 });
@@ -86,6 +87,7 @@ function editData(row) {
 	$('#cont').val(row.cont);// 事项内容
 	$('#deadLine').val(row.deadLine);// 要求完成时间
 	$('#person').val(row.person);// 干系人
+	$('#remindTime').val(row.remindTime);// 干系人
 	$("input[name='priority'][type=radio][value='" + row.priority + "']").attr("checked",true);
 	$('#addAndUpdateLabel').text("修改待办");
 
@@ -105,7 +107,7 @@ $("#btn_add_update_submit")
 					var itemId = $('#itemId').val(), cont = $(
 							'#cont').val(),priority = $('input[name="priority"]:checked').val(),
 							deadLine = $('#deadLine').val(), person = $(
-							'#person').val(), txt_type = $('#txt_type').val();
+							'#person').val(), txt_type = $('#txt_type').val(),remindTime=$('#remindTime').val();
 
 					// 验证数据，不能为空
 					if (!cont) {
@@ -152,7 +154,8 @@ $("#btn_add_update_submit")
 							priority : priority,
 							cont : cont,
 							deadLine : deadLine,
-							person : person
+							person : person,
+							remindTime : remindTime
 						},
 						// 阻止深度序列化，向后台传送数组
 						traditional : true,
