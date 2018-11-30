@@ -74,7 +74,7 @@ function tableInit() {
 		// 分页方式：client客户端分页，server服务端分页
 		sidePagination : "server",
 		// 每页的记录行数
-		pageSize : 8,
+		pageSize : 7,
 		// 初始化加载第1页，默认第1页
 		pageNumber : 1,
 		// 可供选择的每页的行数
@@ -193,13 +193,36 @@ function genderDel(value, row, index) {
 	}
 }
 
+Date.prototype.formatDate = function(fmt)   
+{ //author: meizz   
+  var o = {   
+    "M+" : this.getMonth()+1,                 //月份   
+    "d+" : this.getDate(),                    //日   
+    "H+" : this.getHours(),                   //小时   
+    "m+" : this.getMinutes(),                 //分   
+    "s+" : this.getSeconds(),                 //秒   
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+    "S"  : this.getMilliseconds()             //毫秒   
+  };   
+  if(/(y+)/.test(fmt))   
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+    if(new RegExp("("+ k +")").test(fmt))   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+  return fmt;   
+}
+
 //处理rows中的日期，Integer转化为字符串日期
 function format(rows){
 	var size = rows.length;
 	var temp;
+	var temp1;
 	for(i = 0;i < size; i++){
 		temp = rows[i].creatTime;
-		rows[i].creatTime = new Date(temp*1000).toLocaleString();
+		temp1 = rows[i].remindTime;
+		rows[i].creatTime = new Date(temp*1000).formatDate("yyyy-MM-dd HH:mm:ss");
+		if(temp1)
+			rows[i].remindTime = new Date(temp1*1000).formatDate("yyyy-MM-dd HH:mm:ss");
 	}
 	return rows;	
 }

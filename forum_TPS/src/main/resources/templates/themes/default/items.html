@@ -62,19 +62,19 @@
 
 						<div class="modal-body">
 							<input type="hidden" name="txt_type" class="form-control"
-								id="txt_type" placeholder="操作类型" /> 
-							<input type="hidden"
+								id="txt_type" placeholder="操作类型" /> <input type="hidden"
 								name="itemId" class="form-control" id="itemId" />
 							<div class="form-group">
-								<label for="txt_name">待办事项</label> <input type="text" name="cont"
-									class="form-control" id="cont" placeholder="输入要办的事儿..." autocomplete="off"></input>
+								<label for="txt_name">待办事项</label> <input type="text"
+									name="cont" class="form-control" id="cont"
+									placeholder="输入要办的事儿..." autocomplete="off"></input>
 							</div>
 							<div class="form-group">
-								<label for="txt_name">优先级</label>&nbsp;&nbsp;
-								<label><input type="radio" name="priority" value="低"/>低</label>
-								<label><input type="radio" name="priority" value="中"/>中</label>
-								<label><input type="radio" name="priority" value="高"/>高</label>
-									 
+								<label for="txt_name">优先级</label>&nbsp;&nbsp; <label><input
+									type="radio" name="priority" value="低" />低</label> <label><input
+									type="radio" name="priority" value="中" />中</label> <label><input
+									type="radio" name="priority" value="高" />高</label>
+
 							</div>
 							<div class="form-group">
 								<label for="txt_name">和谁有关</label> <input type="text"
@@ -91,7 +91,7 @@
 									name="deadLine" class="form-control" id="deadLine"
 									placeholder="啥时候儿完成？" autocomplete="off"></input>
 							</div>
-							
+
 						</div>
 
 						<div class="modal-footer">
@@ -108,8 +108,17 @@
 					</div>
 				</div>
 			</div>
+			
+			<script th:src="@{http://127.0.0.1:8687/user/js/laydate/laydate.js}"></script>
 			<script th:src="@{http://127.0.0.1:8687/user/js/table.js}"></script>
 			<script th:src="@{http://127.0.0.1:8687/user/js/table_crud.js}"></script>
+			<script>
+				//执行一个laydate实例,参考：https://www.layui.com/laydate/
+				laydate.render({
+					elem : '#remindTime',//指定元素
+					type : 'datetime'
+				});
+			</script>
 		</div>
 	</div>
 </body>

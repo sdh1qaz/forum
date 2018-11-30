@@ -47,8 +47,8 @@
 				var keyword = document.getElementById("search-inp").value;//原生js获取输入的关键字
 				window.location.href = '/user/search?keyword=' + keyword;
 			}
-			//设置定时器，每一个小时提醒一次待办事项
-			var timer = self.setInterval("remind()",1000*600);
+			//设置定时器，每12分钟提醒一次是否有待办事项
+			var timer = self.setInterval("remind()",1000*60*12);
 			function remind(){
 				$.ajax({
 					url : "/user/items/isHasItems",
@@ -57,6 +57,21 @@
 					success : function(data) {
 						if(data == 'yes'){
 							alert('您有待办未处理！');
+							//window.location.href = '/user/listItems';
+						}
+					}
+				});
+			}
+			//设置定时器，每5分钟提醒一次设置了提醒时间的事项
+			var timer1 = self.setInterval("remind1()",1000*60*5);
+			function remind1(){
+				$.ajax({
+					url : "/user/items/getDueItems",
+					type : "GET",
+					dataType : 'text',
+					success : function(data) {
+						if(data != 'nothing'){
+							alert(data);
 							//window.location.href = '/user/listItems';
 						}
 					}

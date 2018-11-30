@@ -108,6 +108,9 @@ $("#btn_add_update_submit")
 							'#cont').val(),priority = $('input[name="priority"]:checked').val(),
 							deadLine = $('#deadLine').val(), person = $(
 							'#person').val(), txt_type = $('#txt_type').val(),remindTime=$('#remindTime').val();
+					if(remindTime){
+						remindTime = new Date(remindTime).getTime()/1000;
+					}
 
 					// 验证数据，不能为空
 					if (!cont) {

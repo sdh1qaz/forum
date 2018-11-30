@@ -90,7 +90,11 @@ public class ItemController {
 		itemVo.setDeadLine(request.getParameter("deadLine"));//截止时间
 		itemVo.setPerson(request.getParameter("person"));//干系人
 		itemVo.setPriority(request.getParameter("priority"));
-		itemVo.setRemindTime(Integer.parseInt(request.getParameter("remindTime")));//提醒时间
+		String tmp = request.getParameter("remindTime");
+		if (tmp!=null && !"".equals(tmp)) 
+			itemVo.setRemindTime(Integer.parseInt(tmp));//提醒时间
+		else
+			itemVo.setRemindTime(null);
 		int result = iItemVoService.updateByItemId(itemVo);
 		if(result != -1)
 			return "success";
@@ -107,4 +111,30 @@ public class ItemController {
 		else
 			return "no";
 	}
+	
+	//返回快要到期的提醒
+	@RequestMapping(value = "/getDueItems", method = RequestMethod.GET)
+	public String getDueItems() {
+		List<ItemVo> items = iItemVoService.getAllItems();
+		StringBuilder sb = new StringBuilder();
+		
+		long now = System.currentTimeMillis() / 1000;
+		int size = items.size();
+		int count = 1;
+		for(int i = 0;i < size;i++) {
+			ItemVo itemVo = items.get(i);
+			if(itemVo.getRemindTime() == null)
+				continue;
+			else if(itemVo.getRemindTime() - now < 3600) {
+				sb.append(count + ". " + itemVo.getCont() + "\n");
+				count += 1;
+			}
+		}
+		if(sb.length() != 0) {
+			sb.insert(0, "您该做以下事情了：\n\n");
+		}else
+			sb.append("nothing");
+		return sb.toString();
+	}
+	
 }

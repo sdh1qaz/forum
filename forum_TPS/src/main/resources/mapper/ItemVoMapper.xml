@@ -46,9 +46,8 @@
 			<if test="itemVo.priority != null">
 				priority = #{itemVo.priority,jdbcType=VARCHAR},
 			</if>
-			<if test="itemVo.remindTime != null">
+			
 				remind_time = #{itemVo.remindTime,jdbcType=INTEGER},
-			</if>
 		</set>
 		where itemId = #{itemVo.itemId,jdbcType=INTEGER}
 	</update>
