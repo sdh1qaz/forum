@@ -65,6 +65,12 @@
 								id="txt_type" placeholder="操作类型" /> <input type="hidden"
 								name="itemId" class="form-control" id="itemId" />
 							<div class="form-group">
+								<label class="control-label">提醒时间</label> <input type="text"
+									name="remindTime" class="form-control" id="remindTime"
+									placeholder="啥时候儿提醒您？" autocomplete="off"></input>
+							</div>
+							
+							<div class="form-group">
 								<label for="txt_name">待办事项</label> <input type="text"
 									name="cont" class="form-control" id="cont"
 									placeholder="输入要办的事儿..." autocomplete="off"></input>
@@ -81,12 +87,7 @@
 									name="person" class="form-control" id="person"
 									placeholder="和这事有关系的人..." autocomplete="off"></input>
 							</div>
-							<div class="form-group">
-								<label class="control-label">提醒时间</label> <input type="text"
-									name="remindTime" class="form-control" id="remindTime"
-									placeholder="啥时候儿提醒您？" autocomplete="off"></input>
-							</div>
-							<div class="form-group">
+														<div class="form-group">
 								<label class="control-label">备注</label> <input type="text"
 									name="deadLine" class="form-control" id="deadLine"
 									placeholder="啥时候儿完成？" autocomplete="off"></input>
@@ -116,7 +117,9 @@
 				//执行一个laydate实例,参考：https://www.layui.com/laydate/
 				laydate.render({
 					elem : '#remindTime',//指定元素
-					type : 'datetime'
+					type : 'datetime',
+					position : 'fixed'
+
 				});
 			</script>
 		</div>
