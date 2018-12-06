@@ -48,15 +48,15 @@
 				window.location.href = '/user/search?keyword=' + keyword;
 			}
 			//设置定时器，每12分钟提醒一次是否有待办事项
-			var timer = self.setInterval("remind()",1000*60*12);
+			var timer = self.setInterval("remind()",1000*60*30);
 			function remind(){
 				$.ajax({
 					url : "/user/items/isHasItems",
 					type : "GET",
 					dataType : 'text',
 					success : function(data) {
-						if(data == 'yes'){
-							alert('您有待办未处理！');
+						if(data != 'nothing'){
+							alert(data);
 							//window.location.href = '/user/listItems';
 						}
 					}

@@ -742,7 +742,7 @@ input {
 .post-list-item {
 	float: left;
 	width: 100%;
-	height: 60px;
+	height: 53px;
 	padding: 3px;
 	align-items: center
 }
@@ -827,7 +827,7 @@ input {
 }
 
 .post-list-item-container .item-label .item-title a {
-	font-size: 20px;
+	font-size: 22px;
 	line-height: 20px;
 	word-break: break-all;
 	color: blue

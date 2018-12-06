@@ -4,16 +4,15 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.my.blog.website.model.Pages;
 import com.my.blog.website.model.Vo.ItemVo;
 import com.my.blog.website.service.IItemVoService;
+
 
 /**
  * @ClassName： ItemController
@@ -106,10 +105,26 @@ public class ItemController {
 	@RequestMapping(value = "/isHasItems", method = RequestMethod.GET)
 	public String isHasItems() {
 		List<ItemVo> items = iItemVoService.getAllItems();
-		if(items.size() > 0)
-			return "yes";
-		else
-			return "no";
+		int size = items.size();
+		if(size == 0)
+			return "nothing";
+		StringBuilder sb = new StringBuilder();
+		int count = 1;
+		for(int i = 0;i < size;i++) {
+			ItemVo itemVo = items.get(i);
+			if("高".equals(itemVo.getPriority())) {
+				if(count == 1)
+					sb.append("您有以下优先级为高的事情要做：\n\n");
+				sb.append(count + "." + itemVo.getCont() + "；\n");
+				count += 1;
+				
+			}
+			else
+				continue;
+		}
+		if(sb.length() == 0)
+			sb.append("您有待办需处理！");
+		return sb.toString();
 	}
 	
 	//返回快要到期的提醒
