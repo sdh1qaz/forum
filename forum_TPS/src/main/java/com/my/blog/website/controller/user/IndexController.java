@@ -127,9 +127,29 @@ public class IndexController extends BaseController {
 			@RequestParam(value = "limit", defaultValue = "12") int limit, String keyword) {
 		PageInfo<ContentVo> articles = contentService.getArticles(keyword, 1, limit);
 		request.setAttribute("articles", articles);
-		return "admin/article_list";
+		request.setAttribute("key", "admin/search/" + keyword);//把keyword传递给search_list.html页面便于查找下一页
+		return "admin/search_result";
 	}
 
+	/**
+	 * 后台文章管理根据题目关键词搜索文章
+	 * 
+	 * @param request
+	 * @param p第几页
+	 * @param limit每页大小
+	 * @return 搜索结果主页
+	 */
+	@GetMapping(value = "admin/search/{keyword}/{page}")
+	public String listPageAdminSearchResut(HttpServletRequest request, @PathVariable String keyword, @PathVariable int page,
+			@RequestParam(value = "limit", defaultValue = "12") int limit) {
+		page = page < 0 || page > WebConst.MAX_PAGE ? 1 : page;
+		PageInfo<ContentVo> articles = contentService.getArticles(keyword, page, limit);
+		request.setAttribute("articles", articles);
+		request.setAttribute("key", "admin/search/" + keyword);//把keyword传递给search_list.html页面便于查找下一页
+		return "admin/search_result";
+	}
+	
+	
 	/**
 	 * 分页
 	 *

@@ -538,6 +538,14 @@ a:focus {
 	margin-bottom: 0
 }
 
+ol{
+	display: -webkit-inline-box;
+	list-style-type: none
+}
+
+li{
+	padding:0 20px
+}
 .modal-content .panel-group {
 	margin-bottom: 0
 }

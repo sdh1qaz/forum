@@ -140,7 +140,7 @@ public class ItemController {
 			ItemVo itemVo = items.get(i);
 			if(itemVo.getRemindTime() == null)
 				continue;
-			else if(itemVo.getRemindTime() - now < 3600) {
+			else if(itemVo.getRemindTime() - now < 3600*8) {
 				sb.append(count + ". " + itemVo.getCont() + "\n");
 				count += 1;
 			}
