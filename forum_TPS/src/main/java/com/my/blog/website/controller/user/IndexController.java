@@ -1,7 +1,10 @@
 package com.my.blog.website.controller.user;
 
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -38,6 +41,7 @@ import com.my.blog.website.service.IContentService;
 import com.my.blog.website.service.IItemVoService;
 import com.my.blog.website.service.IMetaService;
 import com.my.blog.website.service.ISiteService;
+import com.my.blog.website.service.impl.HistoryQueue;
 import com.my.blog.website.utils.IPKit;
 import com.my.blog.website.utils.PatternKit;
 import com.my.blog.website.utils.TaleUtils;
@@ -61,7 +65,10 @@ public class IndexController extends BaseController {
 	
 	@Resource
 	private IItemVoService itemVoService;
+	
 
+	@Resource
+	private HistoryQueue<ContentVo> histQ;
 	/**
 	 * 首页
 	 *
@@ -179,6 +186,8 @@ public class IndexController extends BaseController {
 	@GetMapping(value = { "article/{cid}", "article/{cid}.html" })
 	public String getArticle(HttpServletRequest request, @PathVariable String cid) {
 		ContentVo contents = contentService.getContents(cid);
+		//当前文章进入浏览历史队列
+		histQ.offer(contents);
 		if (null == contents || "draft".equals(contents.getStatus())) {
 			return this.render_404();
 		}

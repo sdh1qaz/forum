@@ -1,6 +1,9 @@
 package com.my.blog.website.controller.user;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -10,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.my.blog.website.model.Pages;
+import com.my.blog.website.model.Vo.ContentVo;
 import com.my.blog.website.model.Vo.ItemVo;
 import com.my.blog.website.service.IItemVoService;
+import com.my.blog.website.service.impl.HistoryQueue;
 
 
 /**
@@ -27,6 +32,9 @@ public class ItemController {
 	
 	@Resource
 	private IItemVoService iItemVoService;
+	
+	@Resource
+	private HistoryQueue<ContentVo> histQ;
 	
 	//返回所有待办
 	@RequestMapping(value = "/getItems", method = RequestMethod.POST)
@@ -140,7 +148,7 @@ public class ItemController {
 			ItemVo itemVo = items.get(i);
 			if(itemVo.getRemindTime() == null)
 				continue;
-			else if(itemVo.getRemindTime() - now < 3600*8) {
+			else if(itemVo.getRemindTime() - now < 3600*24*3) {
 				sb.append(count + ". " + itemVo.getCont() + "\n");
 				count += 1;
 			}
@@ -150,6 +158,21 @@ public class ItemController {
 		}else
 			sb.append("nothing");
 		return sb.toString();
+	}
+	
+	/**
+	 * 最近浏览历史的10篇文章
+	 * @return json数组[文章名，文章cid}
+	 */
+	@RequestMapping("/histQ")
+	public Map<String,String> getHisQ(){
+		//使用LinkedHashMap来保持插入顺序
+		Map<String,String>  hs = new LinkedHashMap<String,String>();
+		Queue<ContentVo> queue = histQ.getQueue();
+		for(ContentVo contentVo : queue) {
+			hs.put(contentVo.getTitle(), contentVo.getCid().toString());
+		}
+		return hs;
 	}
 	
 }
