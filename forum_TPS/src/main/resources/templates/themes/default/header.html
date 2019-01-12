@@ -29,33 +29,35 @@
 			<a th:href="@{/forum}" class="navbar-logo"> <!-- thymeleaf标签 -->
 				<img th:src="@{/user/img/logo1.jpg}" alt="首页" />小书包
 			</a>
-			
+
 			<div class="text-search">
-				
-				<input type="text" id="search-inp" placeholder="请输入关键字..."/>
-				<input type="button" class="button-header" id="searchButton"
-					onclick="searchBykeyWord()" value="搜索"/>
-					<input type="button" class="button-header" id="toDoListutton"
-					onclick="toDoList()" value="待办"/>
+				<input type="button" class="button-header" id="toDoListutton"
+					onclick="toDoList()" value="待办" /> 
+				<input type="button" class="button-header" id="history"
+					onclick="showHistory()" value="历史" /> 
+				<input type="text"
+					id="search-inp" placeholder="请输入关键字..." /> <input type="button"
+					class="button-header" id="searchButton" onclick="searchBykeyWord()"
+					value="搜索" />
 				<!-- 输入框自动提示的div -->
 				<div id="auto_div"></div>
 			</div>
 		</div>
 		<script>
-		    var test_list;
+			var test_list;
 			function searchBykeyWord() {
 				var keyword = document.getElementById("search-inp").value;//原生js获取输入的关键字
 				window.location.href = '/user/search?keyword=' + keyword;
 			}
 			//设置定时器，每12分钟提醒一次是否有待办事项
-			var timer = self.setInterval("remind()",1000*60*30);
-			function remind(){
+			var timer = self.setInterval("remind()", 1000 * 60 * 30);
+			function remind() {
 				$.ajax({
 					url : "/user/items/isHasItems",
 					type : "GET",
 					dataType : 'text',
 					success : function(data) {
-						if(data != 'nothing'){
+						if (data != 'nothing') {
 							alert(data);
 							//window.location.href = '/user/listItems';
 						}
@@ -63,14 +65,14 @@
 				});
 			}
 			//设置定时器，每5分钟提醒一次设置了提醒时间的事项
-			var timer1 = self.setInterval("remind1()",1000*60*5);
-			function remind1(){
+			var timer1 = self.setInterval("remind1()", 1000 * 60 * 5);
+			function remind1() {
 				$.ajax({
 					url : "/user/items/getDueItems",
 					type : "GET",
 					dataType : 'text',
 					success : function(data) {
-						if(data != 'nothing'){
+						if (data != 'nothing') {
 							alert(data);
 							//window.location.href = '/user/listItems';
 						}
@@ -80,22 +82,26 @@
 			function toDoList() {
 				window.location.href = '/user/listItems';
 			}
+			
+			function showHistory() {
+				window.location.href = '/user/histQ';
+			}
 			$(function() {
 				$.ajax({
-				url : "/user/titles",
-				type : "GET",
-				data : {
-					'keyword' : ''
-				},
-				dataType : 'json',
-				success : function(data) {
-					test_list = data;
+					url : "/user/titles",
+					type : "GET",
+					data : {
+						'keyword' : ''
+					},
+					dataType : 'json',
+					success : function(data) {
+						test_list = data;
 					}
 				});
 			});
 		</script>
 		<script th:src="@{http://127.0.0.1:8687/user/js/input.js}"></script>
-		
+
 	</header>
 </body>
 </html>

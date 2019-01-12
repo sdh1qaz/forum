@@ -1,3 +1,4 @@
+
 package com.my.blog.website.controller.user;
 
 import java.util.LinkedHashMap;
@@ -158,21 +159,6 @@ public class ItemController {
 		}else
 			sb.append("nothing");
 		return sb.toString();
-	}
-	
-	/**
-	 * 最近浏览历史的10篇文章
-	 * @return json数组[文章名，文章cid}
-	 */
-	@RequestMapping("/histQ")
-	public Map<String,String> getHisQ(){
-		//使用LinkedHashMap来保持插入顺序
-		Map<String,String>  hs = new LinkedHashMap<String,String>();
-		Queue<ContentVo> queue = histQ.getQueue();
-		for(ContentVo contentVo : queue) {
-			hs.put(contentVo.getTitle(), contentVo.getCid().toString());
-		}
-		return hs;
 	}
 	
 }

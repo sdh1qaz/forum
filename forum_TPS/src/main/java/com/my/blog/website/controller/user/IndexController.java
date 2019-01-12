@@ -1,9 +1,10 @@
 package com.my.blog.website.controller.user;
 
 import java.net.URLEncoder;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Queue;
 
 import javax.annotation.Resource;
@@ -79,6 +80,24 @@ public class IndexController extends BaseController {
 		return this.index(request, 1, limit);
 	}
 	
+	
+	/**
+	 * 最近浏览历史的10篇文章
+	 * @return json数组[文章名，文章cid}
+	 */
+	@RequestMapping("/user/histQ")
+	public String getHisQ(HttpServletRequest request){
+		//使用LinkedHashMap来保持插入顺序
+		//Map<String,String>  hs = new LinkedHashMap<String,String>();
+		List<ContentVo> articles = new ArrayList<ContentVo>();
+		Queue<ContentVo> queue = histQ.getQueue();
+		for(ContentVo contentVo : queue) {
+			articles.add(contentVo);
+		}
+		Collections.reverse(articles);//顺序倒置
+		request.setAttribute("articles", articles);
+		return this.render("history");
+	}
 
 	/**
 	 * 根据题目关键词搜索文章

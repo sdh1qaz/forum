@@ -26,7 +26,7 @@ public class HistoryQueue<E> implements Queue<E> {
 
 	public HistoryQueue() {
 		super();
-		this.limit = 5;
+		this.limit = 10;
 	}
 
 	/**

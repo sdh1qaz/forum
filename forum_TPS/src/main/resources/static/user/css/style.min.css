@@ -13,9 +13,31 @@
 
 .button-header {
 	height: 30px;
-	width: 40px;
+	width: 60px;
 	color: #333;
-	background: #00c2ff
+	background: #2ee5e6;
+	display: inline-block;
+	position: relative;
+	margin: 5px;
+	padding: 0 20px;
+	text-align: center;
+	text-decoration: none;
+	font: bold 12px/25px Arial, sans-serif;
+	text-shadow: 1px 1px 1px rgba(255, 255, 255, .22);
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	-webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px
+		rgba(255, 255, 255, .44);
+	-moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px
+		rgba(255, 255, 255, .44);
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, .29), inset 1px 1px 1px
+		rgba(255, 255, 255, .44);
+	-webkit-transition: all 0.15s ease;
+	-moz-transition: all 0.15s ease;
+	-o-transition: all 0.15s ease;
+	-ms-transition: all 0.15s ease;
+	transition: all 0.15s ease;
 }
 
 #auto_div {
@@ -25,7 +47,7 @@
 	background: #FFF;
 	position: absolute;
 	top: 60px;
-	left: 72px;
+	left: 147px;
 	color: #323232;
 }
 
@@ -305,7 +327,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 
 .bg-white {
-	background-color: #fff !important
+	background-color: #ccc !important
 }
 
 .bg-grey {
@@ -488,11 +510,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 /*首页搜索框的样式*/
 .text-search {
-	position: absolute;
-	width: 300px;
-	left: 500px;
+	position: fixed;
+	width: 460px;
+	left: 570px;
 	top: -15px;
-	height: 100%;
+	height: 65px;
+	text-align: left;
 }
 
 .sort-artiles {
@@ -732,7 +755,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 input {
 	height: 30px;
-	width: 140px;
+	width: 230px;
 }
 
 .post-lists-body {
@@ -827,7 +850,7 @@ input {
 }
 
 .post-list-item-container .item-label .item-title a {
-	font-size: 22px;
+	font-size: 20px;
 	line-height: 20px;
 	word-break: break-all;
 	color: blue
@@ -1850,7 +1873,11 @@ input {
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -1881,7 +1908,11 @@ keyframes slideDown { 0%{
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -1904,7 +1935,11 @@ transform
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -1934,7 +1969,11 @@ transform
 
 
 
+
+
 :translateY(-80px)
+
+
 
 
 
@@ -1965,7 +2004,11 @@ keyframes slideUp { 0%{
 
 
 
+
+
 :translateY(-80px)
+
+
 
 
 
@@ -1988,7 +2031,11 @@ transform
 
 
 
+
+
 :translateY(-80px)
+
+
 
 
 
@@ -2019,7 +2066,11 @@ transform
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -2042,7 +2093,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
@@ -2073,7 +2128,11 @@ opacity
 
 
 
+
+
 :translateY(0)
+
+
 
 
 
@@ -2096,7 +2155,11 @@ opacity
 
 
 
+
+
 :
+
+
 
 
 
