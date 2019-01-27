@@ -2,7 +2,6 @@ package com.my.blog.website.controller.user;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Queue;
@@ -63,13 +62,13 @@ public class IndexController extends BaseController {
 
 	@Resource
 	private ISiteService siteService;
-	
+
 	@Resource
 	private IItemVoService itemVoService;
-	
 
 	@Resource
 	private HistoryQueue<ContentVo> histQ;
+
 	/**
 	 * 首页
 	 *
@@ -79,22 +78,22 @@ public class IndexController extends BaseController {
 	public String index(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "12") int limit) {
 		return this.index(request, 1, limit);
 	}
-	
-	
+
 	/**
 	 * 最近浏览历史的10篇文章
+	 * 
 	 * @return json数组[文章名，文章cid}
 	 */
 	@RequestMapping("/user/histQ")
-	public String getHisQ(HttpServletRequest request){
-		//使用LinkedHashMap来保持插入顺序
-		//Map<String,String>  hs = new LinkedHashMap<String,String>();
+	public String getHisQ(HttpServletRequest request) {
+		// 使用LinkedHashMap来保持插入顺序
+		// Map<String,String> hs = new LinkedHashMap<String,String>();
 		List<ContentVo> articles = new ArrayList<ContentVo>();
 		Queue<ContentVo> queue = histQ.getQueue();
-		for(ContentVo contentVo : queue) {
+		for (ContentVo contentVo : queue) {
 			articles.add(contentVo);
 		}
-		Collections.reverse(articles);//顺序倒置
+		Collections.reverse(articles);// 顺序倒置
 		request.setAttribute("articles", articles);
 		return this.render("history");
 	}
@@ -111,35 +110,52 @@ public class IndexController extends BaseController {
 	public String listSearchResut(HttpServletRequest request,
 			@RequestParam(value = "limit", defaultValue = "12") int limit, String keyword) {
 		PageInfo<ContentVo> articles = contentService.getArticles(keyword, 1, limit);
+		// 如果搜索的结果只有一篇文章，直接打开
+		if (articles.getSize() == 1) {
+			// 获取文章cid
+			ContentVo cont = contentService.getCont(keyword).get(0);
+			histQ.offer(cont);
+			if (null == cont || "draft".equals(cont.getStatus())) {
+				return this.render_404();
+			}
+			request.setAttribute("article", cont);
+			request.setAttribute("is_post", true);
+			completeArticle(request, cont);
+			contentService.hitsAddsByOne(Integer.valueOf(cont.getCid()));
+			// 记录日志，哪个ip点击了哪篇文章
+			String clientIp = IPKit.getIpAddrByRequest(request);// 客户端ip
+			int port = IPKit.getPort(request);
+			String article = cont.getTitle();// 文章标题
+			LOGGER.info(clientIp + ":" + port + "点击了《" + article + "》");
+			return this.render("post");
+		}
 		request.setAttribute("articles", articles);
-		request.setAttribute("key", "user/search/" + keyword);//把keyword传递给search_list.html页面便于查找下一页
+		request.setAttribute("key", "user/search/" + keyword);// 把keyword传递给search_list.html页面便于查找下一页
 		return this.render("search_result");
 	}
-	
+
 	/**
 	 * 待办按钮响应
 	 * 
 	 * @return 待办页面
 	 */
 	@RequestMapping("user/listItems")
-	public String listToDo(HttpServletRequest request,
-			@RequestParam(value = "limit", defaultValue = "12") int limit) {
-		PageInfo<ItemVo> pageInfo = itemVoService.getItems(1,limit);
+	public String listToDo(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "12") int limit) {
+		PageInfo<ItemVo> pageInfo = itemVoService.getItems(1, limit);
 		request.setAttribute("pageInfo", pageInfo);
 		return this.render("items");
 	}
-	
+
 	@GetMapping(value = "user/search/{keyword}/{page}")
 	public String listPageSearchResut(HttpServletRequest request, @PathVariable String keyword, @PathVariable int page,
 			@RequestParam(value = "limit", defaultValue = "12") int limit) {
 		page = page < 0 || page > WebConst.MAX_PAGE ? 1 : page;
 		PageInfo<ContentVo> articles = contentService.getArticles(keyword, page, limit);
 		request.setAttribute("articles", articles);
-		request.setAttribute("key", "user/search/" + keyword);//把keyword传递给search_list.html页面便于查找下一页
+		request.setAttribute("key", "user/search/" + keyword);// 把keyword传递给search_list.html页面便于查找下一页
 		return this.render("search_result");
 	}
 
-	
 	/**
 	 * 后台文章管理根据题目关键词搜索文章
 	 * 
@@ -153,7 +169,7 @@ public class IndexController extends BaseController {
 			@RequestParam(value = "limit", defaultValue = "12") int limit, String keyword) {
 		PageInfo<ContentVo> articles = contentService.getArticles(keyword, 1, limit);
 		request.setAttribute("articles", articles);
-		request.setAttribute("key", "admin/search/" + keyword);//把keyword传递给search_list.html页面便于查找下一页
+		request.setAttribute("key", "admin/search/" + keyword);// 把keyword传递给search_list.html页面便于查找下一页
 		return "admin/search_result";
 	}
 
@@ -166,16 +182,15 @@ public class IndexController extends BaseController {
 	 * @return 搜索结果主页
 	 */
 	@GetMapping(value = "admin/search/{keyword}/{page}")
-	public String listPageAdminSearchResut(HttpServletRequest request, @PathVariable String keyword, @PathVariable int page,
-			@RequestParam(value = "limit", defaultValue = "12") int limit) {
+	public String listPageAdminSearchResut(HttpServletRequest request, @PathVariable String keyword,
+			@PathVariable int page, @RequestParam(value = "limit", defaultValue = "12") int limit) {
 		page = page < 0 || page > WebConst.MAX_PAGE ? 1 : page;
 		PageInfo<ContentVo> articles = contentService.getArticles(keyword, page, limit);
 		request.setAttribute("articles", articles);
-		request.setAttribute("key", "admin/search/" + keyword);//把keyword传递给search_list.html页面便于查找下一页
+		request.setAttribute("key", "admin/search/" + keyword);// 把keyword传递给search_list.html页面便于查找下一页
 		return "admin/search_result";
 	}
-	
-	
+
 	/**
 	 * 分页
 	 *
@@ -198,6 +213,7 @@ public class IndexController extends BaseController {
 
 	/**
 	 * 文章页
+	 * 
 	 * @param request
 	 * @param cid文章主键
 	 * @return
@@ -205,7 +221,7 @@ public class IndexController extends BaseController {
 	@GetMapping(value = { "article/{cid}", "article/{cid}.html" })
 	public String getArticle(HttpServletRequest request, @PathVariable String cid) {
 		ContentVo contents = contentService.getContents(cid);
-		//当前文章进入浏览历史队列
+		// 当前文章进入浏览历史队列
 		histQ.offer(contents);
 		if (null == contents || "draft".equals(contents.getStatus())) {
 			return this.render_404();
@@ -213,14 +229,15 @@ public class IndexController extends BaseController {
 		request.setAttribute("article", contents);
 		request.setAttribute("is_post", true);
 		completeArticle(request, contents);
-		/*if (!checkHitsFrequency(request, cid)) {
-			updateArticleHit(contents.getCid(), contents.getHits());
-		}*/
+		/*
+		 * if (!checkHitsFrequency(request, cid)) { updateArticleHit(contents.getCid(),
+		 * contents.getHits()); }
+		 */
 		contentService.hitsAddsByOne(Integer.valueOf(cid));
-		//记录日志，哪个ip点击了哪篇文章
-		String clientIp = IPKit.getIpAddrByRequest(request);//客户端ip
+		// 记录日志，哪个ip点击了哪篇文章
+		String clientIp = IPKit.getIpAddrByRequest(request);// 客户端ip
 		int port = IPKit.getPort(request);
-		String article = contents.getTitle();//文章标题
+		String article = contents.getTitle();// 文章标题
 		LOGGER.info(clientIp + ":" + port + "点击了《" + article + "》");
 		return this.render("post");
 

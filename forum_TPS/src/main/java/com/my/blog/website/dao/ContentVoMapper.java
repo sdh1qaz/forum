@@ -44,4 +44,15 @@ public interface ContentVoMapper {
 	
 	//文章的点击数加1
 	int hitsAddsByOne(Integer cid);
+	
+	//根据名字搜文章
+	List<ContentVo> getCont(String title);
+	
+	
+	
+	
+	
+	
+	
+	
 }

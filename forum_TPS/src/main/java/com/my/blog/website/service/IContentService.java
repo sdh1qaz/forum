@@ -124,4 +124,13 @@ public interface IContentService {
 	 */
 	List<String> getTitles(String keyword);
 	
+	
+	/**
+	 * 根据标题查询文章
+	 * 
+	 * @param String title
+	 * @return ContentVo
+	 */
+	List<ContentVo> getCont(String title);
+	
 }

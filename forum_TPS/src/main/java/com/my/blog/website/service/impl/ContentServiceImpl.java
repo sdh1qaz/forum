@@ -173,14 +173,15 @@ public class ContentServiceImpl implements IContentService {
 		List<ContentVo> contentVos = contentDao.selectByExampleWithBLOBs(contentVoExample);
 		return new PageInfo<>(contentVos);
 	}
-	
+
 	/**
 	 * 根据关键词搜索文章标题列表
 	 * 
-	 * @param String keyword
+	 * @param String
+	 *            keyword
 	 * @return List<String>
 	 */
-	public List<String> getTitles(String keyword){
+	public List<String> getTitles(String keyword) {
 		ContentVoExample contentVoExample = new ContentVoExample();
 		ContentVoExample.Criteria criteria = contentVoExample.createCriteria();
 		criteria.andTypeEqualTo(Types.ARTICLE.getType());
@@ -189,10 +190,10 @@ public class ContentServiceImpl implements IContentService {
 		contentVoExample.setOrderByClause("created desc");
 		List<ContentVo> contentVos = contentDao.selectByExampleWithBLOBs(contentVoExample);
 		List<String> title = new ArrayList<String>();
-		//遍历contentVos，获取标题列表
+		// 遍历contentVos，获取标题列表
 		int size = contentVos.size();
-		for(int i = 0;i < size;i++){
-			ContentVo contentVo= contentVos.get(i);
+		for (int i = 0; i < size; i++) {
+			ContentVo contentVo = contentVos.get(i);
 			title.add(contentVo.getTitle());
 		}
 		return title;
@@ -215,6 +216,17 @@ public class ContentServiceImpl implements IContentService {
 			return WebConst.SUCCESS_RESULT;
 		}
 		return "数据为空";
+	}
+
+	/**
+	 * 根据标题查询文章
+	 * 
+	 * @param String
+	 *            title
+	 * @return ContentVo
+	 */
+	public List<ContentVo> getCont(String title) {
+		return contentDao.getCont(title);
 	}
 
 	@Override

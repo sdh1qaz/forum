@@ -114,6 +114,9 @@
 			order by ${orderByClause}
 		</if>
 	</select>
+	<select id="getCont" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+		select * from t_contents where title = #{title}
+	</select>
 	<select id="selectByExample" parameterType="com.my.blog.website.model.Vo.ContentVoExample"
 		resultMap="BaseResultMap">
 		select
