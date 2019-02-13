@@ -112,7 +112,7 @@ $("#btn_add_update_submit")
 						remindTime = new Date(remindTime).getTime()/1000;
 					}
 
-					// 验证数据，不能为空
+					// 验证数据，待办内容不能为空
 					if (!cont) {
 						layer.msg('请填写待办内容!', {
 							icon : 2,
@@ -120,27 +120,7 @@ $("#btn_add_update_submit")
 						});
 						return false;
 					}
-					if (!priority) {
-						layer.msg('请填写待办优先级!', {
-							icon : 2,
-							time : 1000
-						});
-						return false;
-					}
-					if (!deadLine) {
-						layer.msg('请填写要求的完成时间!', {
-							icon : 2,
-							time : 1000
-						});
-						return false;
-					}
-					if (!person) {
-						layer.msg('请填写关系人!', {
-							icon : 2,
-							time : 1000
-						});
-						return false;
-					}
+					
 					var url;
 					if (txt_type == 'add') {
 						url = 'items/insertItem';
