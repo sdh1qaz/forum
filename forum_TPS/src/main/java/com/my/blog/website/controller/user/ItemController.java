@@ -34,9 +34,6 @@ public class ItemController {
 	@Resource
 	private IItemVoService iItemVoService;
 	
-	@Resource
-	private HistoryQueue<ContentVo> histQ;
-	
 	//返回所有待办
 	@RequestMapping(value = "/getItems", method = RequestMethod.POST)
 	public Pages<ItemVo> getItems(HttpServletRequest request){

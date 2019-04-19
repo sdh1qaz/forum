@@ -68,6 +68,18 @@ public class IndexController extends BaseController {
 
 	@Resource
 	private HistoryQueue<ContentVo> histQ;
+	
+	//判断队列中是否已有这个文章
+	public boolean isHasCont(ContentVo contentVo) {
+		boolean is = false;
+		//遍历hisQ
+		for(ContentVo cont : histQ) {
+			if (contentVo.getTitle().equals(cont.getTitle())) {
+				is = true;
+			}
+		}
+		return is;
+	}
 
 	/**
 	 * 首页
@@ -80,7 +92,7 @@ public class IndexController extends BaseController {
 	}
 
 	/**
-	 * 最近浏览历史的10篇文章
+	 * 最近浏览历史的20篇文章
 	 * 
 	 * @return json数组[文章名，文章cid}
 	 */
@@ -114,7 +126,9 @@ public class IndexController extends BaseController {
 		if (articles.getSize() == 1) {
 			// 获取文章cid
 			ContentVo cont = contentService.getCont(keyword).get(0);
-			histQ.offer(cont);
+			if (!isHasCont(cont)) {
+				histQ.offer(cont);
+			}
 			if (null == cont || "draft".equals(cont.getStatus())) {
 				return this.render_404();
 			}
@@ -221,8 +235,10 @@ public class IndexController extends BaseController {
 	@GetMapping(value = { "article/{cid}", "article/{cid}.html" })
 	public String getArticle(HttpServletRequest request, @PathVariable String cid) {
 		ContentVo contents = contentService.getContents(cid);
-		// 当前文章进入浏览历史队列
-		histQ.offer(contents);
+		if (!isHasCont(contents)) {
+			// 当前文章进入浏览历史队列
+			histQ.offer(contents);
+		}
 		if (null == contents || "draft".equals(contents.getStatus())) {
 			return this.render_404();
 		}
